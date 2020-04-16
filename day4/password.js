@@ -1,37 +1,32 @@
-const checkRepetition = function (a, b, c, d, e, f) {
-  return (
-    a == b ||
-    a == c ||
-    a == d ||
-    a == e ||
-    a == f ||
-    b == c ||
-    b == d ||
-    b == e ||
-    b == f ||
-    c == d ||
-    c == e ||
-    c == f ||
-    d == e ||
-    d == f ||
-    e == f
-  );
+const checkRepetition = function (numbers) {
+  let isRepeat = false;
+  for (let idx = 0; idx < numbers.length; idx++) {
+    const dummyNumber = numbers.slice();
+    dummyNumber.splice(idx, 1);
+    if (
+      dummyNumber.includes(numbers[idx]) &&
+      dummyNumber.indexOf(numbers[idx]) === dummyNumber.lastIndexOf(numbers[idx])
+    ) {
+      isRepeat = true;
+    }
+  }
+  return isRepeat;
 };
 
-const checkAscendingOrder = function (a, b, c, d, e, f) {
-  return a <= b && b <= c && c <= d && d <= e && e <= f;
+const checkAscendingOrder = function (number) {
+  return (
+    number[0] <= number[1] &&
+    number[1] <= number[2] &&
+    number[2] <= number[3] &&
+    number[3] <= number[4] &&
+    number[4] <= number[5]
+  );
 };
 
 const isValidWay = function (number) {
   const numbers = number.toString().split('');
-  const a = numbers[0];
-  const b = numbers[1];
-  const c = numbers[2];
-  const d = numbers[3];
-  const e = numbers[4];
-  const f = numbers[5];
-  const isAscendingNumber = checkAscendingOrder(a, b, c, d, e, f);
-  const isDouble = checkRepetition(a, b, c, d, e, f);
+  const isAscendingNumber = checkAscendingOrder(numbers);
+  const isDouble = checkRepetition(numbers);
   return isAscendingNumber && isDouble;
 };
 
