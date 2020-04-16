@@ -24,7 +24,7 @@ const findSpecificSignal = function (signals) {
 };
 
 const main = function () {
-  const signals = JSON.parse(fs.readFileSync('data/day2ComputerSignal.json', 'utf8'));
+  const signals = JSON.parse(fs.readFileSync('computerSignal.json', 'utf8'));
   console.log(findSpecificSignal(signals));
 };
 

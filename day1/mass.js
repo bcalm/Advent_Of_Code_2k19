@@ -15,7 +15,7 @@ const calculateFuelForCraftParts = function (totalRequiredFuel, airCraftPartMass
 };
 
 const main = function () {
-  const airCraftParts = JSON.parse(fs.readFileSync('data/day_1_craft_part_mass.json', 'utf8'));
+  const airCraftParts = JSON.parse(fs.readFileSync('./craftPartMass.json', 'utf8'));
   const requiredFuel = airCraftParts.reduce(calculateFuelForCraftParts, 0);
   const fuelRequirements = airCraftParts.reduce(calculateTotalFuel, 0);
   console.log(fuelRequirements);

@@ -104,8 +104,8 @@ const convertInCoordinate = function (path, point) {
 };
 
 const main = function () {
-  const firstWirePath = JSON.parse(fs.readFileSync('./data/firstWirePath.json', 'utf8'));
-  const secondWirePath = JSON.parse(fs.readFileSync('./data/secondWirePath.json', 'utf8'));
+  const firstWirePath = JSON.parse(fs.readFileSync('./firstWirePath.json', 'utf8'));
+  const secondWirePath = JSON.parse(fs.readFileSync('./secondWirePath.json', 'utf8'));
   const firstWirePoints = firstWirePath.reduce(convertInCoordinate, [[0, 0]]);
   const secondWirePoint = secondWirePath.reduce(convertInCoordinate, [[0, 0]]);
   const manhattanDistance = calculateManhattanDistance(firstWirePoints, secondWirePoint);
