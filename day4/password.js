@@ -1,16 +1,13 @@
 const checkRepetition = function (numbers) {
-  let isRepeat = false;
-  for (let idx = 0; idx < numbers.length; idx++) {
-    const dummyNumber = numbers.slice();
-    dummyNumber.splice(idx, 1);
-    if (
-      dummyNumber.includes(numbers[idx]) &&
-      dummyNumber.indexOf(numbers[idx]) === dummyNumber.lastIndexOf(numbers[idx])
-    ) {
-      isRepeat = true;
+  const categorizedArray = numbers.reduce((context, number) => {
+    if (context.length && context[context.length - 1][0] == number) {
+      context[context.length - 1].push(number);
+    } else {
+      context.push([number]);
     }
-  }
-  return isRepeat;
+    return context;
+  }, []);
+  return categorizedArray.filter((number) => number.length == 2).length;
 };
 
 const checkAscendingOrder = function (number) {
