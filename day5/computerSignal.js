@@ -6,34 +6,52 @@ const addZero = function (number) {
   return extraZero + string;
 };
 
-const findOutputSignal = function (signals, start = 0) {
-  let forwardBy = 4;
-  const req = addZero(signals[start]);
+const findOutputSignal = function (signals, ptrPos = 0) {
+  const req = addZero(signals[ptrPos]);
   const opcode = +req.substr(3, 2);
-  const firstParam = +req.substr(2, 1);
-  const secondParam = +req.substr(1, 1);
-  const thirdParam = +req.substr(0, 1);
-  const pos1 = firstParam ? start + 1 : signals[start + 1];
-  const pos2 = secondParam ? start + 2 : signals[start + 2];
-  const pos3 = thirdParam ? start + 3 : signals[start + 3];
+  const firstParamMode = +req.substr(2, 1);
+  const secondParamMode = +req.substr(1, 1);
+  const thirdParamMode = +req.substr(0, 1);
+  const pos1 = firstParamMode ? ptrPos + 1 : signals[ptrPos + 1];
+  const pos2 = secondParamMode ? ptrPos + 2 : signals[ptrPos + 2];
+  const pos3 = thirdParamMode ? ptrPos + 3 : signals[ptrPos + 3];
+
   if (opcode === 99) return signals[0];
 
   if (opcode === 01) {
+    ptrPos += 4;
     signals[pos3] = signals[pos1] + signals[pos2];
   }
   if (opcode === 02) {
     signals[pos3] = signals[pos1] * signals[pos2];
+    ptrPos += 4;
   }
   if (opcode === 03) {
-    forwardBy = 2;
-    signals[signals[start + 1]] = 1;
+    signals[pos1] = 5;
+    ptrPos += 2;
   }
   if (opcode === 04) {
-    forwardBy = 2;
-    console.log(signals[signals[start + 1]]);
+    console.log(signals[signals[ptrPos + 1]]);
+    ptrPos += 2;
+  }
+  if (opcode === 05) {
+    ptrPos = signals[pos1] ? signals[pos2] : (ptrPos += 3);
+  }
+  if (opcode === 06) {
+    ptrPos = signals[pos1] ? (ptrPos += 3) : signals[pos2];
+  }
+  if (opcode === 07) {
+    ptrPos += 4;
+    const value = signals[pos1] < signals[pos2] ? 1 : 0;
+    signals[pos3] = value;
+  }
+  if (opcode === 08) {
+    ptrPos += 4;
+    const value = signals[pos1] == signals[pos2] ? 1 : 0;
+    signals[pos3] = value;
   }
 
-  return findOutputSignal(signals, (start += forwardBy));
+  return findOutputSignal(signals, ptrPos);
 };
 
 const main = function () {
