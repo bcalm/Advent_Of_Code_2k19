@@ -16,40 +16,30 @@ const findOutputSignal = function (signals, ptrPos = 0) {
   const pos2 = secondParamMode ? ptrPos + 2 : signals[ptrPos + 2];
   const pos3 = thirdParamMode ? ptrPos + 3 : signals[ptrPos + 3];
 
-  if (opcode === 99) return signals[0];
+  const increasePointer = {
+    1: () => (ptrPos += 4),
+    2: () => (ptrPos += 4),
+    3: () => (ptrPos += 2),
+    4: () => (ptrPos += 2),
+    5: () => (ptrPos = signals[pos1] ? signals[pos2] : (ptrPos += 3)),
+    6: () => (ptrPos = signals[pos1] ? (ptrPos += 3) : signals[pos2]),
+    7: () => (ptrPos += 4),
+    8: () => (ptrPos += 4),
+  };
+  const operations = {
+    1: () => (signals[pos3] = signals[pos1] + signals[pos2]),
+    2: () => (signals[pos3] = signals[pos1] * signals[pos2]),
+    3: () => (signals[pos1] = 5),
+    4: () => console.log(signals[pos1]),
+    5: () => {},
+    6: () => {},
+    7: () => (signals[pos3] = signals[pos1] < signals[pos2]),
+    8: () => (signals[pos3] = signals[pos1] == signals[pos2]),
+  };
 
-  if (opcode === 01) {
-    ptrPos += 4;
-    signals[pos3] = signals[pos1] + signals[pos2];
-  }
-  if (opcode === 02) {
-    signals[pos3] = signals[pos1] * signals[pos2];
-    ptrPos += 4;
-  }
-  if (opcode === 03) {
-    signals[pos1] = 5;
-    ptrPos += 2;
-  }
-  if (opcode === 04) {
-    console.log(signals[signals[ptrPos + 1]]);
-    ptrPos += 2;
-  }
-  if (opcode === 05) {
-    ptrPos = signals[pos1] ? signals[pos2] : (ptrPos += 3);
-  }
-  if (opcode === 06) {
-    ptrPos = signals[pos1] ? (ptrPos += 3) : signals[pos2];
-  }
-  if (opcode === 07) {
-    ptrPos += 4;
-    const value = signals[pos1] < signals[pos2] ? 1 : 0;
-    signals[pos3] = value;
-  }
-  if (opcode === 08) {
-    ptrPos += 4;
-    const value = signals[pos1] == signals[pos2] ? 1 : 0;
-    signals[pos3] = value;
-  }
+  if (opcode === 99) return signals[0];
+  operations[opcode]();
+  increasePointer[opcode]();
 
   return findOutputSignal(signals, ptrPos);
 };
