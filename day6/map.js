@@ -23,23 +23,24 @@ const getAllOrbit = function (orbit, mapInput, allOrbit = []) {
   return getAllOrbit(getOrbit(mapInput, orbit), mapInput, allOrbit);
 };
 
-const calculatingUniqStep = function (firstArray, secondArray) {
-  return firstArray.reduce((steps, orbit) => {
-    if (!secondArray.includes(orbit)) {
-      steps.push(orbit);
-    }
-    return steps;
-  }, []).length;
+const removeDuplicateElement = function (array) {
+  return (
+    array.reduce((newArray, ele) => {
+      if (array.indexOf(ele) == array.lastIndexOf(ele)) {
+        newArray.push(ele);
+      }
+      return newArray;
+    }, []).length - 2
+  );
 };
 
 const getDistanceToSanta = function (mapInput) {
   const myAddress = mapInput.find((map) => map.satellite == 'YOU');
   const santaAddress = mapInput.find((map) => map.satellite == 'SAN');
   const allMyOrbit = getAllOrbit(myAddress, mapInput);
-  const allSantaOrbit = getAllOrbit(santaAddress, mapInput);
-  const mySteps = calculatingUniqStep(allMyOrbit, allSantaOrbit) - 1;
-  const santaSteps = calculatingUniqStep(allSantaOrbit, allMyOrbit) - 1;
-  return mySteps + santaSteps;
+  const allOrbit = getAllOrbit(santaAddress, mapInput, allMyOrbit);
+  const minimumSteps = removeDuplicateElement(allOrbit);
+  return minimumSteps;
 };
 
 const main = function () {
@@ -48,7 +49,7 @@ const main = function () {
     orbit = map.split(')');
     return {planet: orbit[0], satellite: orbit[1]};
   });
-  const totalOrbit = findTotalOrbit(mapInput);
+  // const totalOrbit = findTotalOrbit(mapInput);
   const minimumStepsToSanta = getDistanceToSanta(mapInput);
   console.log(minimumStepsToSanta);
 };
