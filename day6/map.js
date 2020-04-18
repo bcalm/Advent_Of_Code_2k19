@@ -1,68 +1,28 @@
 const fs = require('fs');
 
-const findDirectOrbits = function (allOrbits, mapInput) {
-  if (mapInput[0].includes(allOrbits[allOrbits.length - 1])) {
-    allOrbits.push(mapInput[1]);
-  }
-  return allOrbits;
+const getOrbit = function (list, orbit) {
+  return list.find((o) => orbit.planet == o.satellite);
 };
 
-const addWay = function (number, fact = 0) {
-  if (number == 0) {
-    return fact;
+const getOrbitCount = function (orbit, mapInput) {
+  if (!mapInput.includes(orbit)) {
+    return 0;
   }
-  return number + addWay(number - 1);
+  return 1 + getOrbitCount(getOrbit(mapInput, orbit), mapInput);
 };
 
-const findTotalOrbits = function (mapInputs) {
-  let orbits = 0;
-  const directOrbits = mapInputs.slice(1).reduce(findDirectOrbits, [...mapInputs[0]]);
-  const possibleIndirectOrbits = [];
-  let way = 0;
-  for (let i = 0; i <= directOrbits.length; i++) {
-    let count = 0;
-    possibleIndirectOrbits[i] = [...directOrbits.slice(0, i)];
-    for (let index = 0; index < mapInputs.length; index++) {
-      if (mapInputs[index][0] == possibleIndirectOrbits[i][possibleIndirectOrbits[i].length - 1]) {
-        count++;
-      }
-
-      if (count > 1) {
-        possibleIndirectOrbits[i].push(mapInputs[index][1]);
-        count = 1;
-      }
-    }
-
-    if (possibleIndirectOrbits[i].length === i) {
-      possibleIndirectOrbits[i] = [];
-    } else {
-      way +=
-        addWay(possibleIndirectOrbits[i].length - i - 1) +
-        i * (possibleIndirectOrbits[i].length - i);
-    }
-  }
-
-  way += addWay(directOrbits.length - 1);
-  return way;
+const findTotalOrbit = function (mapInput) {
+  return mapInput.reduce((sum, orbit) => sum + getOrbitCount(orbit, mapInput), 0);
 };
 
 const main = function () {
-  // const mapInput = fs.readFileSync('./mapInput.json', 'utf8');
-  const input = `COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L`;
-
-  const mapInputs = input.split('\n').map((e) => e.split(')'));
-  const totalOrbits = findTotalOrbits(mapInputs);
-  console.log(totalOrbits);
+  const orbitsList = fs.readFileSync('./mapInput.json', 'utf8').split('\n');
+  const mapInput = orbitsList.map((map) => {
+    orbit = map.split(')');
+    return {planet: orbit[0], satellite: orbit[1]};
+  });
+  const totalOrbit = findTotalOrbit(mapInput);
+  console.log(totalOrbit);
 };
 
 main();
