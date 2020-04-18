@@ -1,0 +1,764 @@
+{ planet: 'QYZ', satellite: 'YOU' }
+{ planet: 'HVV', satellite: 'QYZ' }
+{ planet: 'DJM', satellite: 'HVV' }
+{ planet: 'BMQ', satellite: 'DJM' }
+{ planet: 'D2D', satellite: 'BMQ' }
+{ planet: '4VF', satellite: 'D2D' }
+{ planet: 'MS1', satellite: '4VF' }
+{ planet: 'TL7', satellite: 'MS1' }
+{ planet: 'Q52', satellite: 'TL7' }
+{ planet: '1YF', satellite: 'Q52' }
+{ planet: '8JT', satellite: '1YF' }
+{ planet: 'GZZ', satellite: '8JT' }
+{ planet: 'M6V', satellite: 'GZZ' }
+{ planet: '4BM', satellite: 'M6V' }
+{ planet: '5PT', satellite: '4BM' }
+{ planet: '9TP', satellite: '5PT' }
+{ planet: '26R', satellite: '9TP' }
+{ planet: 'PYS', satellite: '26R' }
+{ planet: 'SVJ', satellite: 'PYS' }
+{ planet: '58X', satellite: 'SVJ' }
+{ planet: '179', satellite: '58X' }
+{ planet: 'YLT', satellite: '179' }
+{ planet: '6BH', satellite: 'YLT' }
+{ planet: 'S4M', satellite: '6BH' }
+{ planet: 'WB6', satellite: 'S4M' }
+{ planet: 'BSV', satellite: 'WB6' }
+{ planet: '696', satellite: 'BSV' }
+{ planet: '6BG', satellite: '696' }
+{ planet: '63W', satellite: '6BG' }
+{ planet: 'CXG', satellite: '63W' }
+{ planet: '7R1', satellite: 'CXG' }
+{ planet: 'ZYN', satellite: '7R1' }
+{ planet: '7RZ', satellite: 'ZYN' }
+{ planet: '9XF', satellite: '7RZ' }
+{ planet: 'C13', satellite: '9XF' }
+{ planet: 'Y8J', satellite: 'C13' }
+{ planet: 'THQ', satellite: 'Y8J' }
+{ planet: 'TWY', satellite: 'THQ' }
+{ planet: 'Z99', satellite: 'TWY' }
+{ planet: 'QNR', satellite: 'Z99' }
+{ planet: 'C29', satellite: 'QNR' }
+{ planet: 'SVG', satellite: 'C29' }
+{ planet: 'F26', satellite: 'SVG' }
+{ planet: 'J25', satellite: 'F26' }
+{ planet: '7QY', satellite: 'J25' }
+{ planet: 'SJ1', satellite: '7QY' }
+{ planet: 'L7R', satellite: 'SJ1' }
+{ planet: 'T2F', satellite: 'L7R' }
+{ planet: 'CW3', satellite: 'T2F' }
+{ planet: '8DJ', satellite: 'CW3' }
+{ planet: '39T', satellite: '8DJ' }
+{ planet: '3MN', satellite: '39T' }
+{ planet: 'VBK', satellite: '3MN' }
+{ planet: 'SK8', satellite: 'VBK' }
+{ planet: 'M2G', satellite: 'SK8' }
+{ planet: 'RWZ', satellite: 'M2G' }
+{ planet: 'VZX', satellite: 'RWZ' }
+{ planet: '1QR', satellite: 'VZX' }
+{ planet: '3WC', satellite: '1QR' }
+{ planet: 'WBC', satellite: '3WC' }
+{ planet: 'RR1', satellite: 'WBC' }
+{ planet: 'FTR', satellite: 'RR1' }
+{ planet: '7SX', satellite: 'FTR' }
+{ planet: 'HFM', satellite: '7SX' }
+{ planet: '6DM', satellite: 'HFM' }
+{ planet: 'F8P', satellite: '6DM' }
+{ planet: 'XFF', satellite: 'F8P' }
+{ planet: 'LP3', satellite: 'XFF' }
+{ planet: 'CD7', satellite: 'LP3' }
+{ planet: 'HV9', satellite: 'CD7' }
+{ planet: 'B3V', satellite: 'HV9' }
+{ planet: '6ZF', satellite: 'B3V' }
+{ planet: 'SC4', satellite: '6ZF' }
+{ planet: 'DVL', satellite: 'SC4' }
+{ planet: 'LRV', satellite: 'DVL' }
+{ planet: 'S4V', satellite: 'LRV' }
+{ planet: '34D', satellite: 'S4V' }
+{ planet: '5NP', satellite: '34D' }
+{ planet: 'BKC', satellite: '5NP' }
+{ planet: 'K57', satellite: 'BKC' }
+{ planet: '9XB', satellite: 'K57' }
+{ planet: 'SXY', satellite: '9XB' }
+{ planet: 'H5J', satellite: 'SXY' }
+{ planet: '5D2', satellite: 'H5J' }
+{ planet: 'QW5', satellite: '5D2' }
+{ planet: 'T9J', satellite: 'QW5' }
+{ planet: 'GPW', satellite: 'T9J' }
+{ planet: 'QM3', satellite: 'GPW' }
+{ planet: '735', satellite: 'QM3' }
+{ planet: 'SR4', satellite: '735' }
+{ planet: '3FT', satellite: 'SR4' }
+{ planet: 'NS2', satellite: '3FT' }
+{ planet: 'DJ2', satellite: 'NS2' }
+{ planet: '6VZ', satellite: 'DJ2' }
+{ planet: 'ZN9', satellite: '6VZ' }
+{ planet: 'R9T', satellite: 'ZN9' }
+{ planet: '917', satellite: 'R9T' }
+{ planet: '33D', satellite: '917' }
+{ planet: 'ZRP', satellite: '33D' }
+{ planet: '4F9', satellite: 'ZRP' }
+{ planet: 'X97', satellite: '4F9' }
+{ planet: 'X9C', satellite: 'X97' }
+{ planet: 'GT4', satellite: 'X9C' }
+{ planet: 'JRV', satellite: 'GT4' }
+{ planet: 'QWH', satellite: 'JRV' }
+{ planet: 'NMD', satellite: 'QWH' }
+{ planet: 'GJ2', satellite: 'NMD' }
+{ planet: 'ST4', satellite: 'GJ2' }
+{ planet: '9FG', satellite: 'ST4' }
+{ planet: '4V2', satellite: '9FG' }
+{ planet: 'S67', satellite: '4V2' }
+{ planet: 'XTV', satellite: 'S67' }
+{ planet: 'W5K', satellite: 'XTV' }
+{ planet: 'HRX', satellite: 'W5K' }
+{ planet: '1DN', satellite: 'HRX' }
+{ planet: '8J6', satellite: '1DN' }
+{ planet: 'ZT1', satellite: '8J6' }
+{ planet: 'ZGJ', satellite: 'ZT1' }
+{ planet: 'K1S', satellite: 'ZGJ' }
+{ planet: 'NX2', satellite: 'K1S' }
+{ planet: 'FJ2', satellite: 'NX2' }
+{ planet: 'ZXR', satellite: 'FJ2' }
+{ planet: 'TM9', satellite: 'ZXR' }
+{ planet: 'GJQ', satellite: 'TM9' }
+{ planet: 'ZQL', satellite: 'GJQ' }
+{ planet: '57C', satellite: 'ZQL' }
+{ planet: 'MS5', satellite: '57C' }
+{ planet: 'NF9', satellite: 'MS5' }
+{ planet: 'RVN', satellite: 'NF9' }
+{ planet: 'JZD', satellite: 'RVN' }
+{ planet: '3V8', satellite: 'JZD' }
+{ planet: '5PD', satellite: '3V8' }
+{ planet: 'RZ2', satellite: '5PD' }
+{ planet: 'XCH', satellite: 'RZ2' }
+{ planet: 'PRN', satellite: 'XCH' }
+{ planet: 'PLJ', satellite: 'PRN' }
+{ planet: '897', satellite: 'PLJ' }
+{ planet: 'BKR', satellite: '897' }
+{ planet: 'TYM', satellite: 'BKR' }
+{ planet: '54B', satellite: 'TYM' }
+{ planet: 'KXZ', satellite: '54B' }
+{ planet: 'CZ7', satellite: 'KXZ' }
+{ planet: '3ZS', satellite: 'CZ7' }
+{ planet: 'CK3', satellite: '3ZS' }
+{ planet: 'QQY', satellite: 'CK3' }
+{ planet: '5XZ', satellite: 'QQY' }
+{ planet: 'BPL', satellite: '5XZ' }
+{ planet: 'S7P', satellite: 'BPL' }
+{ planet: 'PM8', satellite: 'S7P' }
+{ planet: 'C4B', satellite: 'PM8' }
+{ planet: 'P3D', satellite: 'C4B' }
+{ planet: 'D35', satellite: 'P3D' }
+{ planet: 'DY1', satellite: 'D35' }
+{ planet: 'KBB', satellite: 'DY1' }
+{ planet: 'JXQ', satellite: 'KBB' }
+{ planet: '4TK', satellite: 'JXQ' }
+{ planet: 'T11', satellite: '4TK' }
+{ planet: 'ZL3', satellite: 'T11' }
+{ planet: 'QMT', satellite: 'ZL3' }
+{ planet: '61T', satellite: 'QMT' }
+{ planet: '9TF', satellite: '61T' }
+{ planet: 'Z7Y', satellite: '9TF' }
+{ planet: 'HN1', satellite: 'Z7Y' }
+{ planet: 'PMD', satellite: 'HN1' }
+{ planet: 'M2F', satellite: 'PMD' }
+{ planet: 'Z7P', satellite: 'M2F' }
+{ planet: 'JTP', satellite: 'Z7P' }
+{ planet: 'MC2', satellite: 'JTP' }
+{ planet: 'NBW', satellite: 'MC2' }
+{ planet: 'PGD', satellite: 'NBW' }
+{ planet: '2KN', satellite: 'PGD' }
+{ planet: '75N', satellite: '2KN' }
+{ planet: 'WRX', satellite: '75N' }
+{ planet: 'N3C', satellite: 'WRX' }
+{ planet: 'MDP', satellite: 'N3C' }
+{ planet: 'J5J', satellite: 'MDP' }
+{ planet: '376', satellite: 'J5J' }
+{ planet: 'PMP', satellite: '376' }
+{ planet: 'TH8', satellite: 'PMP' }
+{ planet: '5KV', satellite: 'TH8' }
+{ planet: 'TFV', satellite: '5KV' }
+{ planet: '8T7', satellite: 'TFV' }
+{ planet: '274', satellite: '8T7' }
+{ planet: 'G18', satellite: '274' }
+{ planet: '4PB', satellite: 'G18' }
+{ planet: '447', satellite: '4PB' }
+{ planet: 'DFX', satellite: '447' }
+{ planet: '2JS', satellite: 'DFX' }
+{ planet: 'F4M', satellite: '2JS' }
+{ planet: 'CV6', satellite: 'F4M' }
+{ planet: '8Z7', satellite: 'CV6' }
+{ planet: 'GY7', satellite: '8Z7' }
+{ planet: 'XVZ', satellite: 'GY7' }
+{ planet: 'X6V', satellite: 'XVZ' }
+{ planet: 'T8K', satellite: 'X6V' }
+{ planet: '26X', satellite: 'T8K' }
+{ planet: 'ZDP', satellite: '26X' }
+{ planet: '2TQ', satellite: 'ZDP' }
+{ planet: '1VL', satellite: '2TQ' }
+{ planet: 'PC6', satellite: '1VL' }
+{ planet: 'RYK', satellite: 'PC6' }
+{ planet: 'FLC', satellite: 'RYK' }
+{ planet: '9FV', satellite: 'FLC' }
+{ planet: '6V2', satellite: '9FV' }
+{ planet: 'P4Z', satellite: '6V2' }
+{ planet: 'QR1', satellite: 'P4Z' }
+{ planet: '94W', satellite: 'QR1' }
+{ planet: '2MY', satellite: '94W' }
+{ planet: 'RJ5', satellite: '2MY' }
+{ planet: 'N6S', satellite: 'RJ5' }
+{ planet: 'S92', satellite: 'N6S' }
+{ planet: '9M8', satellite: 'S92' }
+{ planet: '8FL', satellite: '9M8' }
+{ planet: 'S61', satellite: '8FL' }
+{ planet: 'QWG', satellite: 'S61' }
+{ planet: 'Y92', satellite: 'QWG' }
+{ planet: '7TT', satellite: 'Y92' }
+{ planet: '54F', satellite: '7TT' }
+{ planet: 'WZM', satellite: '54F' }
+{ planet: 'KDB', satellite: 'WZM' }
+{ planet: 'SPL', satellite: 'KDB' }
+{ planet: 'G97', satellite: 'SPL' }
+{ planet: 'DSF', satellite: 'G97' }
+{ planet: 'XRT', satellite: 'DSF' }
+{ planet: 'ZYR', satellite: 'XRT' }
+{ planet: 'ZK2', satellite: 'ZYR' }
+{ planet: '66Q', satellite: 'ZK2' }
+{ planet: 'HZV', satellite: '66Q' }
+{ planet: 'HLQ', satellite: 'HZV' }
+{ planet: 'VVQ', satellite: 'HLQ' }
+{ planet: 'HTW', satellite: 'VVQ' }
+{ planet: 'CLQ', satellite: 'HTW' }
+{ planet: 'YYS', satellite: 'CLQ' }
+{ planet: 'HJ6', satellite: 'YYS' }
+{ planet: 'VWZ', satellite: 'HJ6' }
+{ planet: 'L4C', satellite: 'VWZ' }
+{ planet: 'FZF', satellite: 'L4C' }
+{ planet: 'LF9', satellite: 'FZF' }
+{ planet: 'FYN', satellite: 'LF9' }
+{ planet: '6SY', satellite: 'FYN' }
+{ planet: '6W9', satellite: '6SY' }
+{ planet: 'WP4', satellite: '6W9' }
+{ planet: 'SF4', satellite: 'WP4' }
+{ planet: '8N1', satellite: 'SF4' }
+{ planet: 'JXW', satellite: '8N1' }
+{ planet: '24P', satellite: 'JXW' }
+{ planet: '98C', satellite: '24P' }
+{ planet: 'Y9N', satellite: '98C' }
+{ planet: '8PH', satellite: 'Y9N' }
+{ planet: '8ZP', satellite: '8PH' }
+{ planet: '8F5', satellite: '8ZP' }
+{ planet: '9QG', satellite: '8F5' }
+{ planet: 'FP9', satellite: '9QG' }
+{ planet: 'J63', satellite: 'FP9' }
+{ planet: 'DPK', satellite: 'J63' }
+{ planet: 'F6H', satellite: 'DPK' }
+{ planet: 'TPP', satellite: 'F6H' }
+{ planet: 'GN8', satellite: 'TPP' }
+{ planet: 'L9P', satellite: 'GN8' }
+{ planet: 'WMK', satellite: 'L9P' }
+{ planet: '25F', satellite: 'WMK' }
+{ planet: 'NLS', satellite: '25F' }
+{ planet: '979', satellite: 'NLS' }
+{ planet: 'N7F', satellite: '979' }
+{ planet: 'YSV', satellite: 'N7F' }
+{ planet: '3LD', satellite: 'YSV' }
+{ planet: '8RS', satellite: '3LD' }
+{ planet: 'WMS', satellite: '8RS' }
+{ planet: 'Y6B', satellite: 'WMS' }
+{ planet: 'N2F', satellite: 'Y6B' }
+{ planet: '28Z', satellite: 'N2F' }
+{ planet: '55J', satellite: '28Z' }
+{ planet: 'H8F', satellite: '55J' }
+{ planet: 'PT6', satellite: 'H8F' }
+{ planet: 'JNH', satellite: 'PT6' }
+{ planet: 'P9Z', satellite: 'JNH' }
+{ planet: 'SYV', satellite: 'P9Z' }
+{ planet: 'PF7', satellite: 'SYV' }
+{ planet: 'JHT', satellite: 'PF7' }
+{ planet: '7LD', satellite: 'JHT' }
+{ planet: 'MGG', satellite: '7LD' }
+{ planet: 'TGD', satellite: 'MGG' }
+{ planet: '6C7', satellite: 'TGD' }
+{ planet: 'W94', satellite: '6C7' }
+{ planet: 'SHZ', satellite: 'W94' }
+{ planet: '8VM', satellite: 'SHZ' }
+{ planet: 'S2K', satellite: '8VM' }
+{ planet: 'P1X', satellite: 'S2K' }
+{ planet: 'V3L', satellite: 'P1X' }
+{ planet: 'C1T', satellite: 'V3L' }
+{ planet: '8K8', satellite: 'C1T' }
+{ planet: '8V4', satellite: '8K8' }
+{ planet: '26W', satellite: '8V4' }
+{ planet: 'P63', satellite: '26W' }
+{ planet: 'NB8', satellite: 'P63' }
+{ planet: 'GZB', satellite: 'NB8' }
+{ planet: 'T2T', satellite: 'GZB' }
+{ planet: '95F', satellite: 'T2T' }
+{ planet: 'MLG', satellite: '95F' }
+{ planet: '6B8', satellite: 'MLG' }
+{ planet: 'K6N', satellite: '6B8' }
+{ planet: 'TVZ', satellite: 'K6N' }
+{ planet: 'BKN', satellite: 'TVZ' }
+{ planet: '3YR', satellite: 'BKN' }
+{ planet: 'T7T', satellite: '3YR' }
+{ planet: '8TJ', satellite: 'T7T' }
+{ planet: 'H4T', satellite: '8TJ' }
+{ planet: 'WX2', satellite: 'H4T' }
+{ planet: 'RGW', satellite: 'WX2' }
+{ planet: '2JV', satellite: 'RGW' }
+{ planet: 'LX4', satellite: '2JV' }
+{ planet: '3B2', satellite: 'LX4' }
+{ planet: 'HNM', satellite: '3B2' }
+{ planet: 'BN5', satellite: 'HNM' }
+{ planet: '8F9', satellite: 'BN5' }
+{ planet: 'Y2H', satellite: '8F9' }
+{ planet: 'DPH', satellite: 'Y2H' }
+{ planet: 'LTK', satellite: 'DPH' }
+{ planet: 'CDT', satellite: 'LTK' }
+{ planet: 'S25', satellite: 'CDT' }
+{ planet: 'DVX', satellite: 'S25' }
+{ planet: 'P98', satellite: 'DVX' }
+{ planet: '5VK', satellite: 'P98' }
+{ planet: 'MK4', satellite: '5VK' }
+{ planet: 'XJZ', satellite: 'MK4' }
+{ planet: 'YYX', satellite: 'XJZ' }
+{ planet: 'ZRC', satellite: 'YYX' }
+{ planet: '32Q', satellite: 'ZRC' }
+{ planet: 'ZGB', satellite: '32Q' }
+{ planet: 'COM', satellite: 'ZGB' }
+{ planet: 'QYZ', satellite: 'YOU' }
+{ planet: 'HVV', satellite: 'QYZ' }
+{ planet: 'DJM', satellite: 'HVV' }
+{ planet: 'BMQ', satellite: 'DJM' }
+{ planet: 'D2D', satellite: 'BMQ' }
+{ planet: '4VF', satellite: 'D2D' }
+{ planet: 'MS1', satellite: '4VF' }
+{ planet: 'TL7', satellite: 'MS1' }
+{ planet: 'Q52', satellite: 'TL7' }
+{ planet: '1YF', satellite: 'Q52' }
+{ planet: '8JT', satellite: '1YF' }
+{ planet: 'GZZ', satellite: '8JT' }
+{ planet: 'M6V', satellite: 'GZZ' }
+{ planet: '4BM', satellite: 'M6V' }
+{ planet: '5PT', satellite: '4BM' }
+{ planet: '9TP', satellite: '5PT' }
+{ planet: '26R', satellite: '9TP' }
+{ planet: 'PYS', satellite: '26R' }
+{ planet: 'SVJ', satellite: 'PYS' }
+{ planet: '58X', satellite: 'SVJ' }
+{ planet: '179', satellite: '58X' }
+{ planet: 'YLT', satellite: '179' }
+{ planet: '6BH', satellite: 'YLT' }
+{ planet: 'S4M', satellite: '6BH' }
+{ planet: 'WB6', satellite: 'S4M' }
+{ planet: 'BSV', satellite: 'WB6' }
+{ planet: '696', satellite: 'BSV' }
+{ planet: '6BG', satellite: '696' }
+{ planet: '63W', satellite: '6BG' }
+{ planet: 'CXG', satellite: '63W' }
+{ planet: '7R1', satellite: 'CXG' }
+{ planet: 'ZYN', satellite: '7R1' }
+{ planet: '7RZ', satellite: 'ZYN' }
+{ planet: '9XF', satellite: '7RZ' }
+{ planet: 'C13', satellite: '9XF' }
+{ planet: 'Y8J', satellite: 'C13' }
+{ planet: 'THQ', satellite: 'Y8J' }
+{ planet: 'TWY', satellite: 'THQ' }
+{ planet: 'Z99', satellite: 'TWY' }
+{ planet: 'QNR', satellite: 'Z99' }
+{ planet: 'C29', satellite: 'QNR' }
+{ planet: 'SVG', satellite: 'C29' }
+{ planet: 'F26', satellite: 'SVG' }
+{ planet: 'J25', satellite: 'F26' }
+{ planet: '7QY', satellite: 'J25' }
+{ planet: 'SJ1', satellite: '7QY' }
+{ planet: 'L7R', satellite: 'SJ1' }
+{ planet: 'T2F', satellite: 'L7R' }
+{ planet: 'CW3', satellite: 'T2F' }
+{ planet: '8DJ', satellite: 'CW3' }
+{ planet: '39T', satellite: '8DJ' }
+{ planet: '3MN', satellite: '39T' }
+{ planet: 'VBK', satellite: '3MN' }
+{ planet: 'SK8', satellite: 'VBK' }
+{ planet: 'M2G', satellite: 'SK8' }
+{ planet: 'RWZ', satellite: 'M2G' }
+{ planet: 'VZX', satellite: 'RWZ' }
+{ planet: '1QR', satellite: 'VZX' }
+{ planet: '3WC', satellite: '1QR' }
+{ planet: 'WBC', satellite: '3WC' }
+{ planet: 'RR1', satellite: 'WBC' }
+{ planet: 'FTR', satellite: 'RR1' }
+{ planet: '7SX', satellite: 'FTR' }
+{ planet: 'HFM', satellite: '7SX' }
+{ planet: '6DM', satellite: 'HFM' }
+{ planet: 'F8P', satellite: '6DM' }
+{ planet: 'XFF', satellite: 'F8P' }
+{ planet: 'LP3', satellite: 'XFF' }
+{ planet: 'CD7', satellite: 'LP3' }
+{ planet: 'HV9', satellite: 'CD7' }
+{ planet: 'B3V', satellite: 'HV9' }
+{ planet: '6ZF', satellite: 'B3V' }
+{ planet: 'SC4', satellite: '6ZF' }
+{ planet: 'DVL', satellite: 'SC4' }
+{ planet: 'LRV', satellite: 'DVL' }
+{ planet: 'S4V', satellite: 'LRV' }
+{ planet: '34D', satellite: 'S4V' }
+{ planet: '5NP', satellite: '34D' }
+{ planet: 'BKC', satellite: '5NP' }
+{ planet: 'K57', satellite: 'BKC' }
+{ planet: '9XB', satellite: 'K57' }
+{ planet: 'SXY', satellite: '9XB' }
+{ planet: 'H5J', satellite: 'SXY' }
+{ planet: '5D2', satellite: 'H5J' }
+{ planet: 'QW5', satellite: '5D2' }
+{ planet: 'T9J', satellite: 'QW5' }
+{ planet: 'GPW', satellite: 'T9J' }
+{ planet: 'QM3', satellite: 'GPW' }
+{ planet: '735', satellite: 'QM3' }
+{ planet: 'SR4', satellite: '735' }
+{ planet: '3FT', satellite: 'SR4' }
+{ planet: 'NS2', satellite: '3FT' }
+{ planet: 'DJ2', satellite: 'NS2' }
+{ planet: '6VZ', satellite: 'DJ2' }
+{ planet: 'ZN9', satellite: '6VZ' }
+{ planet: 'R9T', satellite: 'ZN9' }
+{ planet: '917', satellite: 'R9T' }
+{ planet: '33D', satellite: '917' }
+{ planet: 'ZRP', satellite: '33D' }
+{ planet: '4F9', satellite: 'ZRP' }
+{ planet: 'X97', satellite: '4F9' }
+{ planet: 'X9C', satellite: 'X97' }
+{ planet: 'GT4', satellite: 'X9C' }
+{ planet: 'JRV', satellite: 'GT4' }
+{ planet: 'QWH', satellite: 'JRV' }
+{ planet: 'NMD', satellite: 'QWH' }
+{ planet: 'GJ2', satellite: 'NMD' }
+{ planet: 'ST4', satellite: 'GJ2' }
+{ planet: '9FG', satellite: 'ST4' }
+{ planet: '4V2', satellite: '9FG' }
+{ planet: 'S67', satellite: '4V2' }
+{ planet: 'XTV', satellite: 'S67' }
+{ planet: 'W5K', satellite: 'XTV' }
+{ planet: 'HRX', satellite: 'W5K' }
+{ planet: '1DN', satellite: 'HRX' }
+{ planet: '8J6', satellite: '1DN' }
+{ planet: 'ZT1', satellite: '8J6' }
+{ planet: 'ZGJ', satellite: 'ZT1' }
+{ planet: 'K1S', satellite: 'ZGJ' }
+{ planet: 'NX2', satellite: 'K1S' }
+{ planet: 'FJ2', satellite: 'NX2' }
+{ planet: 'ZXR', satellite: 'FJ2' }
+{ planet: 'TM9', satellite: 'ZXR' }
+{ planet: 'GJQ', satellite: 'TM9' }
+{ planet: 'ZQL', satellite: 'GJQ' }
+{ planet: '57C', satellite: 'ZQL' }
+{ planet: 'MS5', satellite: '57C' }
+{ planet: 'NF9', satellite: 'MS5' }
+{ planet: 'RVN', satellite: 'NF9' }
+{ planet: 'JZD', satellite: 'RVN' }
+{ planet: '3V8', satellite: 'JZD' }
+{ planet: '5PD', satellite: '3V8' }
+{ planet: 'RZ2', satellite: '5PD' }
+{ planet: 'XCH', satellite: 'RZ2' }
+{ planet: 'PRN', satellite: 'XCH' }
+{ planet: 'PLJ', satellite: 'PRN' }
+{ planet: '897', satellite: 'PLJ' }
+{ planet: 'BKR', satellite: '897' }
+{ planet: 'TYM', satellite: 'BKR' }
+{ planet: '54B', satellite: 'TYM' }
+{ planet: 'KXZ', satellite: '54B' }
+{ planet: 'CZ7', satellite: 'KXZ' }
+{ planet: '3ZS', satellite: 'CZ7' }
+{ planet: 'CK3', satellite: '3ZS' }
+{ planet: 'QQY', satellite: 'CK3' }
+{ planet: '5XZ', satellite: 'QQY' }
+{ planet: 'BPL', satellite: '5XZ' }
+{ planet: 'S7P', satellite: 'BPL' }
+{ planet: 'PM8', satellite: 'S7P' }
+{ planet: 'C4B', satellite: 'PM8' }
+{ planet: 'P3D', satellite: 'C4B' }
+{ planet: 'D35', satellite: 'P3D' }
+{ planet: 'DY1', satellite: 'D35' }
+{ planet: 'KBB', satellite: 'DY1' }
+{ planet: 'JXQ', satellite: 'KBB' }
+{ planet: '4TK', satellite: 'JXQ' }
+{ planet: 'T11', satellite: '4TK' }
+{ planet: 'ZL3', satellite: 'T11' }
+{ planet: 'QMT', satellite: 'ZL3' }
+{ planet: '61T', satellite: 'QMT' }
+{ planet: '9TF', satellite: '61T' }
+{ planet: 'Z7Y', satellite: '9TF' }
+{ planet: 'HN1', satellite: 'Z7Y' }
+{ planet: 'PMD', satellite: 'HN1' }
+{ planet: 'M2F', satellite: 'PMD' }
+{ planet: 'Z7P', satellite: 'M2F' }
+{ planet: 'JTP', satellite: 'Z7P' }
+{ planet: 'MC2', satellite: 'JTP' }
+{ planet: 'NBW', satellite: 'MC2' }
+{ planet: 'PGD', satellite: 'NBW' }
+{ planet: '2KN', satellite: 'PGD' }
+{ planet: '75N', satellite: '2KN' }
+{ planet: 'WRX', satellite: '75N' }
+{ planet: 'N3C', satellite: 'WRX' }
+{ planet: 'MDP', satellite: 'N3C' }
+{ planet: 'J5J', satellite: 'MDP' }
+{ planet: '376', satellite: 'J5J' }
+{ planet: 'PMP', satellite: '376' }
+{ planet: 'TH8', satellite: 'PMP' }
+{ planet: '5KV', satellite: 'TH8' }
+{ planet: 'TFV', satellite: '5KV' }
+{ planet: '8T7', satellite: 'TFV' }
+{ planet: '274', satellite: '8T7' }
+{ planet: 'G18', satellite: '274' }
+{ planet: '4PB', satellite: 'G18' }
+{ planet: '447', satellite: '4PB' }
+{ planet: 'DFX', satellite: '447' }
+{ planet: '2JS', satellite: 'DFX' }
+{ planet: 'F4M', satellite: '2JS' }
+{ planet: 'CV6', satellite: 'F4M' }
+{ planet: '8Z7', satellite: 'CV6' }
+{ planet: 'GY7', satellite: '8Z7' }
+{ planet: 'XVZ', satellite: 'GY7' }
+{ planet: 'X6V', satellite: 'XVZ' }
+{ planet: 'T8K', satellite: 'X6V' }
+{ planet: '26X', satellite: 'T8K' }
+{ planet: 'ZDP', satellite: '26X' }
+{ planet: '2TQ', satellite: 'ZDP' }
+{ planet: '1VL', satellite: '2TQ' }
+{ planet: 'PC6', satellite: '1VL' }
+{ planet: 'RYK', satellite: 'PC6' }
+{ planet: 'FLC', satellite: 'RYK' }
+{ planet: '9FV', satellite: 'FLC' }
+{ planet: '6V2', satellite: '9FV' }
+{ planet: 'P4Z', satellite: '6V2' }
+{ planet: 'QR1', satellite: 'P4Z' }
+{ planet: '94W', satellite: 'QR1' }
+{ planet: '2MY', satellite: '94W' }
+{ planet: 'RJ5', satellite: '2MY' }
+{ planet: 'N6S', satellite: 'RJ5' }
+{ planet: 'S92', satellite: 'N6S' }
+{ planet: '9M8', satellite: 'S92' }
+{ planet: '8FL', satellite: '9M8' }
+{ planet: 'S61', satellite: '8FL' }
+{ planet: 'QWG', satellite: 'S61' }
+{ planet: 'Y92', satellite: 'QWG' }
+{ planet: '7TT', satellite: 'Y92' }
+{ planet: '54F', satellite: '7TT' }
+{ planet: 'WZM', satellite: '54F' }
+{ planet: 'KDB', satellite: 'WZM' }
+{ planet: 'SPL', satellite: 'KDB' }
+{ planet: 'G97', satellite: 'SPL' }
+{ planet: 'DSF', satellite: 'G97' }
+{ planet: 'XRT', satellite: 'DSF' }
+{ planet: 'ZYR', satellite: 'XRT' }
+{ planet: 'ZK2', satellite: 'ZYR' }
+{ planet: '66Q', satellite: 'ZK2' }
+{ planet: 'HZV', satellite: '66Q' }
+{ planet: 'HLQ', satellite: 'HZV' }
+{ planet: 'VVQ', satellite: 'HLQ' }
+{ planet: 'HTW', satellite: 'VVQ' }
+{ planet: 'CLQ', satellite: 'HTW' }
+{ planet: 'YYS', satellite: 'CLQ' }
+{ planet: 'HJ6', satellite: 'YYS' }
+{ planet: 'VWZ', satellite: 'HJ6' }
+{ planet: 'L4C', satellite: 'VWZ' }
+{ planet: 'FZF', satellite: 'L4C' }
+{ planet: 'LF9', satellite: 'FZF' }
+{ planet: 'FYN', satellite: 'LF9' }
+{ planet: '6SY', satellite: 'FYN' }
+{ planet: '6W9', satellite: '6SY' }
+{ planet: 'WP4', satellite: '6W9' }
+{ planet: 'SF4', satellite: 'WP4' }
+{ planet: '8N1', satellite: 'SF4' }
+{ planet: 'JXW', satellite: '8N1' }
+{ planet: '24P', satellite: 'JXW' }
+{ planet: '98C', satellite: '24P' }
+{ planet: 'Y9N', satellite: '98C' }
+{ planet: '8PH', satellite: 'Y9N' }
+{ planet: '8ZP', satellite: '8PH' }
+{ planet: '8F5', satellite: '8ZP' }
+{ planet: '9QG', satellite: '8F5' }
+{ planet: 'FP9', satellite: '9QG' }
+{ planet: 'J63', satellite: 'FP9' }
+{ planet: 'DPK', satellite: 'J63' }
+{ planet: 'F6H', satellite: 'DPK' }
+{ planet: 'TPP', satellite: 'F6H' }
+{ planet: 'GN8', satellite: 'TPP' }
+{ planet: 'L9P', satellite: 'GN8' }
+{ planet: 'WMK', satellite: 'L9P' }
+{ planet: '25F', satellite: 'WMK' }
+{ planet: 'NLS', satellite: '25F' }
+{ planet: '979', satellite: 'NLS' }
+{ planet: 'N7F', satellite: '979' }
+{ planet: 'YSV', satellite: 'N7F' }
+{ planet: '3LD', satellite: 'YSV' }
+{ planet: '8RS', satellite: '3LD' }
+{ planet: 'WMS', satellite: '8RS' }
+{ planet: 'Y6B', satellite: 'WMS' }
+{ planet: 'N2F', satellite: 'Y6B' }
+{ planet: '28Z', satellite: 'N2F' }
+{ planet: '55J', satellite: '28Z' }
+{ planet: 'H8F', satellite: '55J' }
+{ planet: 'PT6', satellite: 'H8F' }
+{ planet: 'JNH', satellite: 'PT6' }
+{ planet: 'P9Z', satellite: 'JNH' }
+{ planet: 'SYV', satellite: 'P9Z' }
+{ planet: 'PF7', satellite: 'SYV' }
+{ planet: 'JHT', satellite: 'PF7' }
+{ planet: '7LD', satellite: 'JHT' }
+{ planet: 'MGG', satellite: '7LD' }
+{ planet: 'TGD', satellite: 'MGG' }
+{ planet: '6C7', satellite: 'TGD' }
+{ planet: 'W94', satellite: '6C7' }
+{ planet: 'SHZ', satellite: 'W94' }
+{ planet: '8VM', satellite: 'SHZ' }
+{ planet: 'S2K', satellite: '8VM' }
+{ planet: 'P1X', satellite: 'S2K' }
+{ planet: 'V3L', satellite: 'P1X' }
+{ planet: 'C1T', satellite: 'V3L' }
+{ planet: '8K8', satellite: 'C1T' }
+{ planet: '8V4', satellite: '8K8' }
+{ planet: '26W', satellite: '8V4' }
+{ planet: 'P63', satellite: '26W' }
+{ planet: 'NB8', satellite: 'P63' }
+{ planet: 'GZB', satellite: 'NB8' }
+{ planet: 'T2T', satellite: 'GZB' }
+{ planet: '95F', satellite: 'T2T' }
+{ planet: 'MLG', satellite: '95F' }
+{ planet: '6B8', satellite: 'MLG' }
+{ planet: 'K6N', satellite: '6B8' }
+{ planet: 'TVZ', satellite: 'K6N' }
+{ planet: 'BKN', satellite: 'TVZ' }
+{ planet: '3YR', satellite: 'BKN' }
+{ planet: 'T7T', satellite: '3YR' }
+{ planet: '8TJ', satellite: 'T7T' }
+{ planet: 'H4T', satellite: '8TJ' }
+{ planet: 'WX2', satellite: 'H4T' }
+{ planet: 'RGW', satellite: 'WX2' }
+{ planet: '2JV', satellite: 'RGW' }
+{ planet: 'LX4', satellite: '2JV' }
+{ planet: '3B2', satellite: 'LX4' }
+{ planet: 'HNM', satellite: '3B2' }
+{ planet: 'BN5', satellite: 'HNM' }
+{ planet: '8F9', satellite: 'BN5' }
+{ planet: 'Y2H', satellite: '8F9' }
+{ planet: 'DPH', satellite: 'Y2H' }
+{ planet: 'LTK', satellite: 'DPH' }
+{ planet: 'CDT', satellite: 'LTK' }
+{ planet: 'S25', satellite: 'CDT' }
+{ planet: 'DVX', satellite: 'S25' }
+{ planet: 'P98', satellite: 'DVX' }
+{ planet: '5VK', satellite: 'P98' }
+{ planet: 'MK4', satellite: '5VK' }
+{ planet: 'XJZ', satellite: 'MK4' }
+{ planet: 'YYX', satellite: 'XJZ' }
+{ planet: 'ZRC', satellite: 'YYX' }
+{ planet: '32Q', satellite: 'ZRC' }
+{ planet: 'ZGB', satellite: '32Q' }
+{ planet: 'COM', satellite: 'ZGB' }
+[
+  { planet: 'QYZ', satellite: 'YOU' },
+  { planet: 'HVV', satellite: 'QYZ' },
+  { planet: 'DJM', satellite: 'HVV' },
+  { planet: 'BMQ', satellite: 'DJM' },
+  { planet: 'D2D', satellite: 'BMQ' },
+  { planet: '4VF', satellite: 'D2D' },
+  { planet: 'MS1', satellite: '4VF' },
+  { planet: 'TL7', satellite: 'MS1' },
+  { planet: 'Q52', satellite: 'TL7' },
+  { planet: '1YF', satellite: 'Q52' },
+  { planet: '8JT', satellite: '1YF' },
+  { planet: 'GZZ', satellite: '8JT' },
+  { planet: 'M6V', satellite: 'GZZ' },
+  { planet: '4BM', satellite: 'M6V' },
+  { planet: '5PT', satellite: '4BM' },
+  { planet: '9TP', satellite: '5PT' },
+  { planet: '26R', satellite: '9TP' },
+  { planet: 'PYS', satellite: '26R' },
+  { planet: 'SVJ', satellite: 'PYS' },
+  { planet: '58X', satellite: 'SVJ' },
+  { planet: '179', satellite: '58X' },
+  { planet: 'YLT', satellite: '179' },
+  { planet: '6BH', satellite: 'YLT' },
+  { planet: 'S4M', satellite: '6BH' },
+  { planet: 'WB6', satellite: 'S4M' },
+  { planet: 'BSV', satellite: 'WB6' },
+  { planet: '696', satellite: 'BSV' },
+  { planet: '6BG', satellite: '696' },
+  { planet: '63W', satellite: '6BG' },
+  { planet: 'CXG', satellite: '63W' },
+  { planet: '7R1', satellite: 'CXG' },
+  { planet: 'ZYN', satellite: '7R1' },
+  { planet: '7RZ', satellite: 'ZYN' },
+  { planet: '9XF', satellite: '7RZ' },
+  { planet: 'C13', satellite: '9XF' },
+  { planet: 'Y8J', satellite: 'C13' },
+  { planet: 'THQ', satellite: 'Y8J' },
+  { planet: 'TWY', satellite: 'THQ' },
+  { planet: 'Z99', satellite: 'TWY' },
+  { planet: 'QNR', satellite: 'Z99' },
+  { planet: 'C29', satellite: 'QNR' },
+  { planet: 'SVG', satellite: 'C29' },
+  { planet: 'F26', satellite: 'SVG' },
+  { planet: 'J25', satellite: 'F26' },
+  { planet: '7QY', satellite: 'J25' },
+  { planet: 'SJ1', satellite: '7QY' },
+  { planet: 'L7R', satellite: 'SJ1' },
+  { planet: 'T2F', satellite: 'L7R' },
+  { planet: 'CW3', satellite: 'T2F' },
+  { planet: '8DJ', satellite: 'CW3' },
+  { planet: '39T', satellite: '8DJ' },
+  { planet: '3MN', satellite: '39T' },
+  { planet: 'VBK', satellite: '3MN' },
+  { planet: 'SK8', satellite: 'VBK' },
+  { planet: 'M2G', satellite: 'SK8' },
+  { planet: 'RWZ', satellite: 'M2G' },
+  { planet: 'VZX', satellite: 'RWZ' },
+  { planet: '1QR', satellite: 'VZX' },
+  { planet: '3WC', satellite: '1QR' },
+  { planet: 'WBC', satellite: '3WC' },
+  { planet: 'RR1', satellite: 'WBC' },
+  { planet: 'FTR', satellite: 'RR1' },
+  { planet: '7SX', satellite: 'FTR' },
+  { planet: 'HFM', satellite: '7SX' },
+  { planet: '6DM', satellite: 'HFM' },
+  { planet: 'F8P', satellite: '6DM' },
+  { planet: 'XFF', satellite: 'F8P' },
+  { planet: 'LP3', satellite: 'XFF' },
+  { planet: 'CD7', satellite: 'LP3' },
+  { planet: 'HV9', satellite: 'CD7' },
+  { planet: 'B3V', satellite: 'HV9' },
+  { planet: '6ZF', satellite: 'B3V' },
+  { planet: 'SC4', satellite: '6ZF' },
+  { planet: 'DVL', satellite: 'SC4' },
+  { planet: 'LRV', satellite: 'DVL' },
+  { planet: 'S4V', satellite: 'LRV' },
+  { planet: '34D', satellite: 'S4V' },
+  { planet: '5NP', satellite: '34D' },
+  { planet: 'BKC', satellite: '5NP' },
+  { planet: 'K57', satellite: 'BKC' },
+  { planet: '9XB', satellite: 'K57' },
+  { planet: 'SXY', satellite: '9XB' },
+  { planet: 'H5J', satellite: 'SXY' },
+  { planet: '5D2', satellite: 'H5J' },
+  { planet: 'QW5', satellite: '5D2' },
+  { planet: 'T9J', satellite: 'QW5' },
+  { planet: 'GPW', satellite: 'T9J' },
+  { planet: 'QM3', satellite: 'GPW' },
+  { planet: '735', satellite: 'QM3' },
+  { planet: 'SR4', satellite: '735' },
+  { planet: '3FT', satellite: 'SR4' },
+  { planet: 'NS2', satellite: '3FT' },
+  { planet: 'DJ2', satellite: 'NS2' },
+  { planet: '6VZ', satellite: 'DJ2' },
+  { planet: 'ZN9', satellite: '6VZ' },
+  { planet: 'R9T', satellite: 'ZN9' },
+  { planet: '917', satellite: 'R9T' },
+  { planet: '33D', satellite: '917' },
+  { planet: 'ZRP', satellite: '33D' },
+  { planet: '4F9', satellite: 'ZRP' },
+  ... 230 more items
+]
+undefined
