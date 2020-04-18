@@ -23,27 +23,23 @@ const getAllOrbit = function (orbit, mapInput, allOrbit = []) {
   return getAllOrbit(getOrbit(mapInput, orbit), mapInput, allOrbit);
 };
 
+const calculatingUniqStep = function (firstArray, secondArray) {
+  return firstArray.reduce((steps, orbit) => {
+    if (!secondArray.includes(orbit)) {
+      steps.push(orbit);
+    }
+    return steps;
+  }, []).length;
+};
+
 const getDistanceToSanta = function (mapInput) {
   const myAddress = mapInput.find((map) => map.satellite == 'YOU');
   const santaAddress = mapInput.find((map) => map.satellite == 'SAN');
   const allMyOrbit = getAllOrbit(myAddress, mapInput);
   const allSantaOrbit = getAllOrbit(santaAddress, mapInput);
-
-  let minimumStep = allMyOrbit.reduce((steps, orbit) => {
-    if (!allSantaOrbit.includes(orbit)) {
-      steps.push(orbit);
-    }
-    return steps;
-  }, []);
-
-  minimumStep = allSantaOrbit.reduce((steps, orbit) => {
-    if (!allMyOrbit.includes(orbit)) {
-      steps.push(orbit);
-    }
-    return steps;
-  }, minimumStep);
-
-  return minimumStep.length - 2;
+  const mySteps = calculatingUniqStep(allMyOrbit, allSantaOrbit) - 1;
+  const santaSteps = calculatingUniqStep(allSantaOrbit, allMyOrbit) - 1;
+  return mySteps + santaSteps;
 };
 
 const main = function () {
