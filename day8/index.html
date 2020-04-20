@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body onload="createGrid()">
+    <div class="container"></div>
+  </body>
+  <script>
+    const createGrid = function () {
+      const data = '011000011011110100001110010010000100001010000100101000000010001001000010010100000001001000100001110010010100101000010000100000110001100111101111010000'.split(
+        ''
+      );
+      for (let i = 0; i < 6; i++) {
+        for (let index = 0; index < 25; index++) {
+          const div = document.createElement('div');
+          const container = document.getElementsByClassName('container');
+          const color = data[i * 25 + index] === '0' ? 'white' : 'black';
+          div.className = 'grid';
+          div.style['background-color'] = color;
+          container[0].appendChild(div);
+        }
+      }
+    };
+  </script>
+</html>
