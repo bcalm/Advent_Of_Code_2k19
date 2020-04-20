@@ -49,7 +49,7 @@ const main = function () {
     orbit = map.split(')');
     return {planet: orbit[0], satellite: orbit[1]};
   });
-  // const totalOrbit = findTotalOrbit(mapInput);
+  const totalOrbit = findTotalOrbit(mapInput);
   const minimumStepsToSanta = getDistanceToSanta(mapInput);
   console.log(minimumStepsToSanta);
 };
