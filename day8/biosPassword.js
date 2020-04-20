@@ -59,14 +59,11 @@ const main = function () {
 
   const layers = convertToLayers(image, layerWidth, layerHeight);
 
-  /* Part_1 Implementation
-
+  /* Part_1 Implementation */
   const fewestZeroLayer = findFewestZeroLayer(layers);
   const oneCount = getDigitCount(fewestZeroLayer, '1');
   const twoCount = getDigitCount(fewestZeroLayer, '2');
   console.log(oneCount * twoCount);
-
-  */
 
   /* Part_2 Implementation */
   console.log(getImage(layers, 150).join(''));
