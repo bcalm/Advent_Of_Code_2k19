@@ -1,7 +1,7 @@
 const {runIntCode} = require('./intCodeComputer');
 const {IntCode} = require('./intCode');
 const signalInput = require('./signalInput.json');
-const possibleSettings = require('./phaseSetting');
+const possibleSettings = require('./phaseSetting.json');
 
 const getHighestThrusterSignal = function (intCode, phaseSettings) {
   let input = 0;

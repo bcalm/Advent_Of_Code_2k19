@@ -1,8 +1,40 @@
-const {IntCode} = require('./intCode');
 let memory, output, input;
 
-const moveRelativeBase = function (length) {
-  return memory.moveRelativeBase(length);
+const addZero = function (number) {
+  const string = number.toString();
+  const extraZero = '0'.repeat(5 - string.length);
+  return extraZero + string;
+};
+
+const getJumpLength = function (dest) {
+  return dest === null ? 3 : memory.getDistanceFromPtr(dest);
+};
+
+const add = function (dest, ip1, ip2) {
+  return memory.updateMemory(dest, ip1 + ip2);
+};
+
+const mul = function (dest, ip1, ip2) {
+  return memory.updateMemory(dest, ip1 * ip2);
+};
+
+const readIn = function (dest) {
+  if (input.length) {
+    return memory.updateMemory(dest, input.pop());
+  }
+  return null;
+};
+
+const printOutput = function (content) {
+  return output.push(content);
+};
+
+const jumpIfFalse = function (ip1, dest) {
+  return ip1 === 0 ? dest : null;
+};
+
+const jumpIfTrue = function (ip1, dest) {
+  return ip1 !== 0 ? dest : null;
 };
 
 const equals = function (ip1, ip2, dest) {
@@ -15,90 +47,64 @@ const lessThan = function (ip1, ip2, dest) {
   return memory.updateMemory(dest, result);
 };
 
-const jumpIfFalse = function (ip1, dest) {
-  return ip1 === 0 ? dest : null;
+const getSubstring = function (string, pos1, pos2) {
+  return string.substr(pos1, pos2);
 };
 
-const jumpIfTrue = function (ip1, dest) {
-  return ip1 !== 0 ? dest : null;
+const getPositions = function (signals, ptrPos, mode, pos) {
+  return mode ? ptrPos + pos : signals[ptrPos + pos];
 };
 
-const prnOut = function (content) {
-  return output.push(content);
-};
+const findOutputSignal = function (intCode) {
+  let {signals, ptrPos} = intCode;
 
-const readIn = function (dest) {
-  if (input.length) {
-    return memory.updateMemory(dest, input.pop());
-  }
-  return null;
-};
-
-const mul = function (ip1, ip2, dest) {
-  return memory.updateMemory(dest, ip1 * ip2);
-};
-
-const add = function (ip1, ip2, dest) {
-  return memory.updateMemory(dest, ip1 + ip2);
-};
-
-const getJumpLength = function (dest) {
-  return dest === null ? 3 : memory.getDistanceFromPtr(dest);
-};
-
-const expandCommand = function (command) {
-  const cmdString = '0000'.slice(0, 5 - command.toString().length).concat(command);
-  return cmdString.split('');
-};
-
-const parseCommand = function (command) {
-  const expandedCommand = expandCommand(command);
-  const opcode = +expandedCommand.slice(-2, 5).join('');
-
-  const [opMode, ip2Mode, ip1Mode] = expandedCommand
-    .slice(0, 3)
-    .map((mode, index) => (+mode === 2 ? 2 : opcode === 3 || index === 0 ? 1 : +mode));
-
-  return {
-    opcode,
-    ip1Mode,
-    ip2Mode,
-    opMode,
-  };
-};
-
-const getInstrLength = function (opcode) {
-  const twoParaCmd = [3, 4, 9];
-  const jmpOp = [5, 6];
-  return twoParaCmd.includes(opcode) ? 2 : jmpOp.includes(opcode) ? 3 : 4;
-};
-
-const parseInstruction = function () {
-  let command = memory.getCommand();
-  const {opcode, ip1Mode, ip2Mode, opMode} = parseCommand(command);
-  const instrLength = getInstrLength(opcode);
-  const params = memory.getCurrentParams(instrLength, [ip1Mode, ip2Mode, opMode]);
-
-  return {opcode, params, instrLength};
-};
-
-const processInstruction = function () {
   let done = false;
-  const instructionLookup = {
+
+  const req = addZero(signals[ptrPos]);
+  const opcode = +getSubstring(req, 3, 2);
+  const firstParamMode = +getSubstring(req, 2, 1);
+  const secondParamMode = +getSubstring(req, 1, 1);
+  const thirdParamMode = +getSubstring(req, 0, 1);
+  const pos1 = getPositions(signals, ptrPos, firstParamMode, 1);
+  const pos2 = getPositions(signals, ptrPos, secondParamMode, 2);
+  const pos3 = getPositions(signals, ptrPos, thirdParamMode, 3);
+
+  const params = {
+    1: [pos3, signals[pos1], signals[pos2]],
+    2: [pos3, signals[pos1], signals[pos2]],
+    3: [pos1],
+    4: [signals[pos1]],
+    5: [signals[pos1], signals[pos2]],
+    6: [signals[pos1], signals[pos2]],
+    7: [signals[pos1], signals[pos2], pos3],
+    8: [signals[pos1], signals[pos2], pos3],
+  };
+
+  const operations = {
     1: add,
     2: mul,
     3: readIn,
-    4: prnOut,
+    4: printOutput,
     5: jumpIfTrue,
     6: jumpIfFalse,
     7: lessThan,
     8: equals,
-    9: moveRelativeBase,
     99: () => null,
   };
-  const {opcode, params, instrLength} = parseInstruction();
-  const instruction = instructionLookup[opcode];
-  const result = instruction(...params);
+
+  const instrLengths = {
+    1: 4,
+    2: 4,
+    3: 2,
+    4: 2,
+    7: 4,
+    8: 4,
+  };
+
+  const operation = operations[opcode];
+
+  const result = operation(...params[opcode]);
+  const instrLength = instrLengths[opcode];
 
   if (opcode === 5 || opcode === 6) {
     return {done, instrLength: getJumpLength(result)};
@@ -113,22 +119,19 @@ const processInstruction = function () {
 
 const runIntCode = function (intCode, inputData) {
   memory = intCode;
+
   input = inputData.slice();
   output = [];
 
   while (!memory.isDone()) {
-    const {done, instrLength} = processInstruction();
+    const {done, instrLength} = findOutputSignal(intCode);
     if (done) {
       break;
     }
+
     memory.movePtrBy(instrLength);
   }
-
   return output.slice();
 };
 
-const main = function () {
-  return runIntCode(new IntCode(testData), inputData);
-};
-
-module.exports = {runIntCode, main};
+module.exports = {runIntCode};
