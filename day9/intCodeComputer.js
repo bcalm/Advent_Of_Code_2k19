@@ -80,15 +80,15 @@ const findOutputSignal = function (intCode) {
   const pos3 = getPositions(signals, ptrPos + 3, thirdParamMode);
 
   const params = {
-    1: () => [pos3, signals[pos1], signals[pos2]],
-    2: () => [pos3, signals[pos1], signals[pos2]],
-    3: () => [pos1],
-    4: () => [signals[pos1]],
-    5: () => [signals[pos1], signals[pos2]],
-    6: () => [signals[pos1], signals[pos2]],
-    7: () => [signals[pos1], signals[pos2], pos3],
-    8: () => [signals[pos1], signals[pos2], pos3],
-    9: () => [signals[pos1]],
+    1: [pos3, signals[pos1], signals[pos2]],
+    2: [pos3, signals[pos1], signals[pos2]],
+    3: [pos1],
+    4: [signals[pos1]],
+    5: [signals[pos1], signals[pos2]],
+    6: [signals[pos1], signals[pos2]],
+    7: [signals[pos1], signals[pos2], pos3],
+    8: [signals[pos1], signals[pos2], pos3],
+    9: [signals[pos1]],
   };
 
   const operations = {
@@ -116,7 +116,7 @@ const findOutputSignal = function (intCode) {
 
   const operation = operations[opcode];
 
-  const result = operation(...params[opcode]());
+  const result = operation(...params[opcode]);
   const instrLength = instrLengths[opcode];
 
   if (opcode === 5 || opcode === 6) {
