@@ -1,39 +1,62 @@
 const fs = require('fs');
+const {Grid} = require('./grid');
 
-const findXCoordinate = function (map, yCoordinate) {
-  let xCoordinate = 0;
-  return map.reduce((mapPositions, newPosition) => {
-    const statusLookup = {
-      '.': 'empty',
-      '#': 'asteroid',
-    };
-    const location = {
-      status: statusLookup[newPosition],
-      position: [xCoordinate, yCoordinate],
-    };
-    xCoordinate++;
-    mapPositions.push(location);
-    return mapPositions;
-  }, []);
+const getBestMonitoringLocation = function (grid, asteroids) {
+  const location = {
+    asteroidsCounts: -1,
+    asteroidsLocation: null,
+  };
+  for (let i = 0; i < asteroids.length; i++) {
+    const asteroidsCounts = grid.getAsteroidCount(asteroids[i].position);
+
+    if (asteroidsCounts > location.asteroidsCounts) {
+      location.asteroidsCounts = asteroidsCounts;
+      location.asteroidsLocation = asteroids[i].position;
+    }
+  }
+  return location;
 };
-
-const findAsteroidPosition = function (input) {
-  let yCoordinate = 0;
-  return input.reduce((map, newPosition) => {
-    const position = findXCoordinate(newPosition.split(''), yCoordinate);
-    yCoordinate++;
-    map.push(position);
-    return map;
-  }, []);
-};
-
 const main = function () {
-  const input = `.#..#
-.....
-#####
-....#
-...##`;
-  const map = findAsteroidPosition(input.split('\n'));
+  const input = fs.readFileSync('./asteroidPosition.json', 'utf8');
+  // //   const input = `#.#.##..#.###...##.#....##....###
+  // // ...#..#.#.##.....#..##.#...###..#
+  // // ####...#..#.##...#.##..####..#.#.
+  // // ..#.#..#...#..####.##....#..####.
+  // // ....##...#.##...#.#.#...#.#..##..
+  // // .#....#.##.#.##......#..#..#..#..
+  // // .#.......#.....#.....#...###.....
+  // // #.#.#.##..#.#...###.#.###....#..#
+  // // #.#..........##..###.......#...##
+  // // #.#.........##...##.#.##..####..#
+  // // ###.#..#####...#..#.#...#..#.#...
+  // // .##.#.##.........####.#.#...##...
+  // // ..##...#..###.....#.#...#.#..#.##
+  // // .#...#.....#....##...##...###...#
+  // // ###...#..#....#............#.....
+  // // .#####.#......#.......#.#.##..#.#
+  // // #.#......#.#.#.#.......##..##..##
+  // // .#.##...##..#..##...##...##.....#
+  // // #.#...#.#.#.#.#..#...#...##...#.#
+  // // ##.#..#....#..##.#.#....#.##...##
+  // // ...###.#.#.......#.#..#..#...#.##
+  // // .....##......#.....#..###.....##.
+  // // ........##..#.#........##.......#
+  // // #.##.##...##..###.#....#....###.#
+  // // ..##.##....##.#..#.##..#.....#...
+  // // .#.#....##..###.#...##.#.#.#..#..
+  // // ..#..##.##.#.##....#...#.........
+  // // #...#.#.#....#.......#.#...#..#.#
+  // // ...###.##.#...#..#...##...##....#
+  // // ...#..#.#.#..#####...#.#...####.#
+  // // ##.#...#..##..#..###.#..........#
+  // // ..........#..##..#..###...#..#...
+  // // .#.##...#....##.....#.#...##...##`;
+
+  const grid = new Grid(input);
+
+  const asteroids = grid.getAllAsteroid();
+  const bestMonitoringLocation = getBestMonitoringLocation(grid, asteroids);
+  console.log(bestMonitoringLocation);
 };
 
 main();
