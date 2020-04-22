@@ -8,7 +8,6 @@ const getBestMonitoringLocation = function (grid, asteroids) {
   };
   for (let i = 0; i < asteroids.length; i++) {
     const asteroidsCounts = grid.getAsteroidCount(asteroids[i].position);
-
     if (asteroidsCounts > location.asteroidsCounts) {
       location.asteroidsCounts = asteroidsCounts;
       location.asteroidsLocation = asteroids[i].position;
@@ -16,13 +15,18 @@ const getBestMonitoringLocation = function (grid, asteroids) {
   }
   return location;
 };
+
+const getVaporizeAsteroidLocation = function (grid, location) {
+  return grid.vaporizedAsteroidLocation(location);
+};
+
 const main = function () {
   const input = fs.readFileSync('./asteroidPosition.json', 'utf8');
   const grid = new Grid(input);
   const asteroids = grid.getAllAsteroid();
-
-  const bestMonitoringLocation = getBestMonitoringLocation(grid, asteroids);
-  console.log(bestMonitoringLocation);
+  // const bestMonitoringLocation = getBestMonitoringLocation(grid, asteroids);
+  const vaporizedAsteroidLocation = getVaporizeAsteroidLocation(grid, [22, 28]);
+  console.log(vaporizedAsteroidLocation);
 };
 
 main();
