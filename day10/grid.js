@@ -1,30 +1,3 @@
-const vaporizedAsteroid = function (map, index) {
-  const blast = map[index].findIndex((e) => e.mark == false);
-  if (blast >= 0 || index > map.length - 3) {
-    map[blast].mark = true;
-    return map;
-  }
-  return vaporizedAsteroid(map, index + 1);
-};
-
-const blast = function (map) {
-  let destroyed = 0;
-  let location = 0;
-  for (let index = 0; index < map.length; index++) {
-    map = vaporizedAsteroid(map, index);
-    destroyed++;
-    if (destroyed == 200) {
-      location = map[index];
-      break;
-    }
-  }
-  return location;
-};
-
-const makeAscendingOrder = function (angles) {
-  return angles.map((angle) => angle.sort((a, b) => a.distance - b.distance));
-};
-
 const calcLength = function (x1, y1, x2, y2) {
   const dx = Math.pow(x1 - x2, 2);
   const dy = Math.pow(y1 - y2, 2);
@@ -36,17 +9,6 @@ const calcAngle = function (x1, y1, x2, y2) {
   const dy = y2 - y1;
   const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 90;
   return angle < 0 ? angle + 360 : angle;
-};
-
-const divideInCategory = function (angles) {
-  return angles.reduce((c, e) => {
-    if (c.length && c[c.length - 1][0].angle == e.angle) {
-      c[c.length - 1].push(e);
-    } else {
-      c.push([e]);
-    }
-    return c;
-  }, []);
 };
 
 const isPointOnLine = function (firstPoint, secondPoint, thirdPoint) {
@@ -104,10 +66,6 @@ class Grid {
     }, []);
   };
 
-  getAsteroidPosition() {
-    return this.asteroidPosition;
-  }
-
   getAllAsteroid() {
     return this.asteroidPosition.filter((e) => e.status === 'asteroid');
   }
@@ -125,16 +83,6 @@ class Grid {
     const angle = calcAngle(position[0], position[1], location[0], location[1]);
     const mark = false;
     return {distance, angle, position, mark};
-  }
-
-  vaporizedAsteroidLocation(location) {
-    const asteroids = this.getAllAsteroid();
-    const angles = asteroids
-      .map((asteroid) => this.polar(location, asteroid))
-      .sort((a, b) => a.angle - b.angle);
-    const categorizedAngle = divideInCategory(angles);
-    const sortByDistance = makeAscendingOrder(categorizedAngle);
-    return blast(sortByDistance);
   }
 }
 module.exports = {Grid};
