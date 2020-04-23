@@ -1,10 +1,9 @@
 const fs = require('fs');
+const {Robot} = require('./robot');
 const {IntCode} = require('./intCode');
 
-let grid = {};
-let memory, output;
-let currentPosition,
-  input = [];
+let memory, output, robot;
+let input = [];
 
 const addZero = function (number) {
   const string = number.toString();
@@ -25,7 +24,7 @@ const mul = function (dest, ip1, ip2) {
 };
 
 const readIn = function (dest) {
-  const color = grid[currentPosition.join(':')] === 'WHITE' ? 1 : 0;
+  const color = robot.currentPanelColor();
   input.push(color);
   if (input.length) {
     return memory.updateMemory(dest, input.pop());
@@ -138,43 +137,13 @@ const findOutputSignal = function (intCode) {
   return {done, instrLength};
 };
 
-const runRobotProgram = function (direction) {
-  const [color, turn] = output;
-  let newDirection;
-  grid[currentPosition.join(':')] = color ? 'WHITE' : 'BLACK';
-  if (direction === 'UP') {
-    currentPosition = turn
-      ? [currentPosition[0] + 1, currentPosition[1]]
-      : [currentPosition[0] - 1, currentPosition[1]];
-    newDirection = turn ? 'RIGHT' : 'LEFT';
-  }
-  if (direction === 'DOWN') {
-    currentPosition = turn
-      ? [currentPosition[0] - 1, currentPosition[1]]
-      : [currentPosition[0] + 1, currentPosition[1]];
-    newDirection = turn ? 'LEFT' : 'RIGHT';
-  }
-  if (direction === 'LEFT') {
-    currentPosition = turn
-      ? [currentPosition[0], currentPosition[1] + 1]
-      : [currentPosition[0], currentPosition[1] - 1];
-    newDirection = turn ? 'UP' : 'DOWN';
-  }
-  if (direction === 'RIGHT') {
-    currentPosition = turn
-      ? [currentPosition[0], currentPosition[1] - 1]
-      : [currentPosition[0], currentPosition[1] + 1];
-    newDirection = turn ? 'DOWN' : 'UP';
-  }
-  return newDirection;
-};
-
 const runIntCode = function (intCode) {
   memory = intCode;
   output = [];
-  currentPosition = [0, 50];
-  grid[currentPosition.join(':')] = 'WHITE';
-  let direction = 'UP';
+  const currentPosition = [0, 50];
+  const initialColor = 'WHITE';
+  const initialDirection = 'UP';
+  robot = new Robot(currentPosition, initialColor, initialDirection);
 
   while (!memory.isDone()) {
     const {done, instrLength} = findOutputSignal(intCode);
@@ -182,12 +151,12 @@ const runIntCode = function (intCode) {
       break;
     }
     if (output.length == 2) {
-      direction = runRobotProgram(direction);
+      robot.move(output);
       output = [];
     }
     memory.movePtrBy(instrLength);
   }
-  return grid;
+  return robot.getGrid();
 };
 
 const printPassword = function (paintPosition) {
