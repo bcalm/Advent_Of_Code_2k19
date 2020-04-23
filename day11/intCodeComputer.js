@@ -2,8 +2,7 @@ const fs = require('fs');
 const {Robot} = require('./robot');
 const {IntCode} = require('./intCode');
 
-let memory, output, robot;
-let input = [];
+let memory, robot;
 
 const addZero = function (number) {
   const string = number.toString();
@@ -28,7 +27,7 @@ const readIn = function (dest) {
 };
 
 const printOutput = function (content) {
-  return output.push(content);
+  return robot.storeOutput(content);
 };
 
 const jumpIfFalse = function (ip1, dest) {
@@ -134,21 +133,17 @@ const findOutputSignal = function (intCode) {
 
 const runIntCode = function (intCode) {
   memory = intCode;
-  output = [];
-  const currentPosition = [0, 50];
+  const initialPosition = [0, 50];
   const initialColor = 'WHITE';
   const initialDirection = 'UP';
-  robot = new Robot(currentPosition, initialColor, initialDirection);
+  robot = new Robot(initialPosition, initialColor, initialDirection);
 
   while (!memory.isDone()) {
     const {done, instrLength} = findOutputSignal(intCode);
     if (done) {
       break;
     }
-    if (output.length == 2) {
-      robot.move(output);
-      output = [];
-    }
+    robot.next();
     memory.movePtrBy(instrLength);
   }
   return robot.getGrid();

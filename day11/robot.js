@@ -4,6 +4,7 @@ class Robot {
     this.currentDirection = initialDirection;
     this.grid = {};
     this.colorCurrentPosition(initialColor);
+    this.output = [];
   }
 
   colorCurrentPosition(color) {
@@ -14,8 +15,8 @@ class Robot {
     return this.grid;
   }
 
-  move(output) {
-    const [value, turn] = output;
+  move() {
+    const [value, turn] = this.output;
     let newDirection;
     const color = value ? 'WHITE' : 'BLACK';
     this.colorCurrentPosition(color);
@@ -46,8 +47,19 @@ class Robot {
     this.currentDirection = newDirection;
   }
 
+  next() {
+    if (this.output.length == 2) {
+      this.move();
+      this.output = [];
+    }
+  }
+
   currentPanelColor() {
     return this.grid[this.currentPosition.join(':')] === 'White';
+  }
+
+  storeOutput(value) {
+    this.output.push(value);
   }
 }
 
