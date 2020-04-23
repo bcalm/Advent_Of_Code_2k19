@@ -1,4 +1,4 @@
-const [...positions] = require('./moonsPosition.json');
+const fs = require('fs');
 
 const findCordVelocity = function (firstPosition, secondPosition) {
   if (firstPosition < secondPosition) return 1;
@@ -20,10 +20,35 @@ const addEnergy = function (totalEnergy, moon) {
   return totalEnergy + pot * kin;
 };
 
-const calculateEnergy = function () {
-  let steps = 0;
-  let moonsPosition = positions;
-  while (steps < 1000) {
+const compareMoonPosition = function (oldMoon, newMoon) {
+  const oldPosition = oldMoon.positions;
+  const oldVelocity = oldMoon.velocity;
+  const newPosition = newMoon.positions;
+  const newVelocity = newMoon.velocity;
+  const isXEqual = oldVelocity.x === newVelocity.x && oldPosition.x === newPosition.x;
+  const isYEqual = oldVelocity.y === newVelocity.y && oldPosition.y === newPosition.y;
+  const isZEqual = oldVelocity.z === newVelocity.z && oldPosition.z === newPosition.z;
+  return isXEqual && isYEqual && isZEqual;
+};
+
+const compareNewPosition = function (positions, moonsPosition) {
+  const isFirstOneIsInSamePosition = compareMoonPosition(positions[0], moonsPosition[0]);
+  const isSecondOneIsInSamePosition = compareMoonPosition(positions[1], moonsPosition[1]);
+  const isThirdOneIsInSamePosition = compareMoonPosition(positions[2], moonsPosition[2]);
+  const isFourthOneIsInSamePosition = compareMoonPosition(positions[3], moonsPosition[3]);
+  return (
+    isFirstOneIsInSamePosition &&
+    isSecondOneIsInSamePosition &&
+    isThirdOneIsInSamePosition &&
+    isFourthOneIsInSamePosition
+  );
+};
+
+const calculateEnergy = function (initialPosition) {
+  let steps = 1;
+  const moonsPosition = initialPosition.slice();
+
+  while (true) {
     for (let index = 0; index < moonsPosition.length; index++) {
       let moons = moonsPosition.slice();
       moons.splice(index, 1);
@@ -36,15 +61,20 @@ const calculateEnergy = function () {
       moonsPosition[index].positions.y += moonsPosition[index].velocity.y;
       moonsPosition[index].positions.z += moonsPosition[index].velocity.z;
     }
+    const originals = require('./moonsPosition.json');
 
+    if (compareNewPosition(originals, moonsPosition)) {
+      break;
+    }
     steps++;
   }
-  return moonsPosition.reduce(addEnergy, 0);
+  return steps;
 };
 
 const main = function () {
-  const energy = calculateEnergy();
-  console.log(energy);
+  const positions = JSON.parse(fs.readFileSync('./moonsPosition.json', 'utf8'));
+  const steps = calculateEnergy(positions.slice());
+  console.log(steps);
 };
 
 main();
