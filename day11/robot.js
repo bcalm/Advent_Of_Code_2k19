@@ -20,6 +20,7 @@ class Robot {
     let newDirection;
     const color = value ? 'WHITE' : 'BLACK';
     this.colorCurrentPosition(color);
+
     if (this.currentDirection === 'UP') {
       this.currentPosition = turn
         ? [this.currentPosition[0] + 1, this.currentPosition[1]]
