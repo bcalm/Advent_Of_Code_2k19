@@ -172,8 +172,8 @@ const runRobotProgram = function (direction) {
 const runIntCode = function (intCode) {
   memory = intCode;
   output = [];
-  currentPosition = [0, 0];
-  grid[currentPosition.join(':')] = 'Black';
+  currentPosition = [0, 50];
+  grid[currentPosition.join(':')] = 'WHITE';
   let direction = 'UP';
 
   while (!memory.isDone()) {
@@ -190,11 +190,24 @@ const runIntCode = function (intCode) {
   return grid;
 };
 
+const printPassword = function (paintPosition) {
+  for (let i = 0; i < 50; i++) {
+    for (let index = 20; index < 100; index++) {
+      if (paintPosition[[i, index].join(':')] === 'WHITE') {
+        process.stdout.write('0');
+      } else {
+        process.stdout.write(' ');
+      }
+    }
+    console.log('');
+  }
+};
+
 const main = function () {
   const intCodes = JSON.parse(fs.readFileSync('intCode.json', 'utf8'));
   const input = new IntCode(intCodes);
   const paint = runIntCode(input);
-  console.log(Object.keys(paint).length);
+  printPassword(paint);
 };
 
 main();
