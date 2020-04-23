@@ -24,12 +24,7 @@ const mul = function (dest, ip1, ip2) {
 };
 
 const readIn = function (dest) {
-  const color = robot.currentPanelColor();
-  input.push(color);
-  if (input.length) {
-    return memory.updateMemory(dest, input.pop());
-  }
-  return null;
+  return memory.updateMemory(dest, robot.currentPanelColor());
 };
 
 const printOutput = function (content) {
