@@ -3,13 +3,14 @@ const {IntCode} = require('./intCode');
 const {runIntCode} = require('./intCodeComputer.js');
 
 const countBlock = function (grid) {
-  const tiles = Object.values(grid);
-  return tiles.reduce((count, tile) => count + (tile === 2), 0);
+  return grid.reduce((count, tile) => count + (Object.values(tile)[0] === 2), 0);
 };
 
 const paintTile = function (grid, output) {
   const [x, y, tileType] = output;
-  grid[[x, y].join(':')] = tileType;
+  const tile = {};
+  tile[[x, y].join(':')] = tileType;
+  grid.push(tile);
   return grid;
 };
 
@@ -25,13 +26,14 @@ const createGrid = function (outputs) {
     },
     [[]]
   );
-  return categorizedOutput.reduce(paintTile, {});
+  return categorizedOutput.reduce(paintTile, []);
 };
 
 const main = function () {
   const input = JSON.parse(fs.readFileSync('./intCode.json', 'utf8'));
   const intCode = new IntCode(input);
   const output = runIntCode(intCode, []);
+
   const grid = createGrid(output);
   console.log(countBlock(grid));
 };
