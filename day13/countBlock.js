@@ -7,10 +7,32 @@ const countBlock = function (grid) {
   return tiles.reduce((count, tile) => count + (tile === 2), 0);
 };
 
+const paintTile = function (grid, output) {
+  const [x, y, tileType] = output;
+  grid[[x, y].join(':')] = tileType;
+  return grid;
+};
+
+const createGrid = function (outputs) {
+  const categorizedOutput = outputs.reduce(
+    (grid, output) => {
+      if (grid[grid.length - 1].length < 3) {
+        grid[grid.length - 1].push(output);
+      } else {
+        grid.push([output]);
+      }
+      return grid;
+    },
+    [[]]
+  );
+  return categorizedOutput.reduce(paintTile, {});
+};
+
 const main = function () {
   const input = JSON.parse(fs.readFileSync('./intCode.json', 'utf8'));
   const intCode = new IntCode(input);
-  const grid = runIntCode(intCode, []);
+  const output = runIntCode(intCode, []);
+  const grid = createGrid(output);
   console.log(countBlock(grid));
 };
 

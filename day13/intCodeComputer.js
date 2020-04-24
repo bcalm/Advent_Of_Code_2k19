@@ -1,4 +1,3 @@
-const grid = {};
 let memory, output, input;
 
 const addZero = function (number) {
@@ -130,12 +129,6 @@ const findOutputSignal = function (intCode) {
   return {done, instrLength};
 };
 
-const paintTile = function () {
-  const [x, y, tileType] = output;
-  grid[[x, y].join(':')] = tileType;
-  output = [];
-};
-
 const runIntCode = function (intCode, inputData) {
   memory = intCode;
   input = inputData.slice();
@@ -146,14 +139,10 @@ const runIntCode = function (intCode, inputData) {
     if (done) {
       break;
     }
-    if (output.length === 3) {
-      paintTile();
-    }
-
     memory.movePtrBy(instrLength);
   }
 
-  return grid;
+  return output.slice();
 };
 
 module.exports = {runIntCode};
