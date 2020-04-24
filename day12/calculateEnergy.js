@@ -25,10 +25,9 @@ const compareMoonPosition = function (oldMoon, newMoon, axis) {
   for (let index = 0; index < newMoon.length; index++) {
     const isPositionSame = oldMoon[index].positions[axis] === newMoon[index].positions[axis];
     const isVelocitySame = oldMoon[index].velocity[axis] === newMoon[index].velocity[axis];
-    done = isPositionSame && isVelocitySame ? ++done : done;
+    done = isPositionSame && isVelocitySame ? done : ++done;
   }
-
-  return done === 4;
+  return !done;
 };
 
 const getRepeatedTime = function (positions, axis) {
@@ -36,10 +35,10 @@ const getRepeatedTime = function (positions, axis) {
   const moonsPosition = JSON.parse(JSON.stringify(positions));
 
   while (true) {
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < moonsPosition.length; index++) {
       moonsPosition.reduce(calculateVelocity, moonsPosition[index]);
     }
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < moonsPosition.length; index++) {
       moonsPosition[index].positions.x += moonsPosition[index].velocity.x;
       moonsPosition[index].positions.y += moonsPosition[index].velocity.y;
       moonsPosition[index].positions.z += moonsPosition[index].velocity.z;
