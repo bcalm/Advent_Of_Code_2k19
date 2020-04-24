@@ -1,3 +1,47 @@
+  /*Part_1 implementation
+    const energy = calculateEnergy(positions.slice());
+  */
+
+
+/* For part_1 implementation finding energy for particular steps
+const calculateEnergy = function (initialPosition) {
+  let steps = 0;
+  const moonsPosition = initialPosition.slice();
+
+  while (steps < 1000) {
+    for (let index = 0; index < moonsPosition.length; index++) {
+      let moons = moonsPosition.slice();
+      moons.splice(index, 1);
+      moons[index] = moons.reduce(calculateVelocity, moonsPosition[index]);
+      moonsPosition[index] = moons[index];
+    }
+
+    for (let index = 0; index < moonsPosition.length; index++) {
+      moonsPosition[index].positions.x += moonsPosition[index].velocity.x;
+      moonsPosition[index].positions.y += moonsPosition[index].velocity.y;
+      moonsPosition[index].positions.z += moonsPosition[index].velocity.z;
+    }
+
+    steps++;
+  }
+  return moonsPosition.reduce(addEnergy, 0);
+};
+
+
+
+*/
+
+// const positions = JSON.parse(fs.readFileSync('./moonsPosition.json', 'utf8'));
+
+const calculateSteps = function (positions) {
+  return steps;
+};
+
+
+
+
+
+
 const fs = require('fs');
 
 const findCordVelocity = function (firstPosition, secondPosition) {
@@ -11,13 +55,6 @@ const calculateVelocity = function (moonPosition, newMoon) {
   moonPosition.velocity.y += findCordVelocity(moonPosition.positions.y, newMoon.positions.y);
   moonPosition.velocity.z += findCordVelocity(moonPosition.positions.z, newMoon.positions.z);
   return moonPosition;
-};
-
-const addEnergy = function (totalEnergy, moon) {
-  const {positions, velocity} = moon;
-  const pot = Math.abs(positions.x) + Math.abs(positions.y) + Math.abs(positions.z);
-  const kin = Math.abs(velocity.x) + Math.abs(velocity.y) + Math.abs(velocity.z);
-  return totalEnergy + pot * kin;
 };
 
 const compareMoonPosition = function (oldMoon, newMoon, axis) {
@@ -39,6 +76,7 @@ const getRepeatedTime = function (positions, axis) {
     for (let index = 0; index < 4; index++) {
       moonsPosition.reduce(calculateVelocity, moonsPosition[index]);
     }
+    // 113028
     for (let index = 0; index < 4; index++) {
       moonsPosition[index].positions.x += moonsPosition[index].velocity.x;
       moonsPosition[index].positions.y += moonsPosition[index].velocity.y;
@@ -53,28 +91,20 @@ const getRepeatedTime = function (positions, axis) {
   return steps;
 };
 
-const greatestCommonDivisor = function (number1, number2) {
-  if (number1 == 0) {
-    return number2;
-  }
-  return greatestCommonDivisor(number2 % number1, number1);
-};
-
-const findLcmOfTwo = function (number1, number2) {
-  const gcd = greatestCommonDivisor(number1, number2);
-  const product = number1 * number2;
-  return product / gcd;
-};
-
-const getLCM = function (num1, num2, num3) {
-  return findLcmOfTwo(findLcmOfTwo(num1, num2), num3);
-};
-
 const calculateSteps = function (positions) {
   const xPeriod = getRepeatedTime(positions, 'x');
   const yPeriod = getRepeatedTime(positions, 'y');
   const zPeriod = getRepeatedTime(positions, 'z');
-  return getLCM(xPeriod, yPeriod, zPeriod);
+  let result;
+  const isSame = (period) => result % period !== 0;
+  console.log(xPeriod, yPeriod, zPeriod);
+
+  for (let i = 1; isSame(yPeriod) || isSame(zPeriod); i += 1) {
+    console.log(result);
+
+    result = i * xPeriod;
+  }
+  return result;
 };
 
 const main = function () {
@@ -84,3 +114,4 @@ const main = function () {
 };
 
 main();
+
