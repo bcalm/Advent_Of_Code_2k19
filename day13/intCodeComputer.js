@@ -1,4 +1,6 @@
-let memory, output, input;
+const {Game} = require('./game');
+
+let memory, game;
 
 const addZero = function (number) {
   const string = number.toString();
@@ -19,14 +21,11 @@ const mul = function (dest, ip1, ip2) {
 };
 
 const readIn = function (dest) {
-  if (input.length) {
-    return memory.updateMemory(dest, input.pop());
-  }
-  return null;
+  return memory.updateMemory(dest, game.getInput());
 };
 
 const printOutput = function (content) {
-  return output.push(content);
+  return game.storeOutput(content);
 };
 
 const jumpIfFalse = function (ip1, dest) {
@@ -131,18 +130,20 @@ const findOutputSignal = function (intCode) {
 
 const runIntCode = function (intCode, inputData) {
   memory = intCode;
-  input = inputData.slice();
-  output = [];
+  const initialBallPos = [0, 0];
+  const initialPaddlePos = [0, 0];
+  game = new Game(initialBallPos, initialPaddlePos);
 
   while (!memory.isDone()) {
     const {done, instrLength} = findOutputSignal(intCode);
     if (done) {
       break;
     }
+    game.play();
     memory.movePtrBy(instrLength);
   }
 
-  return output.slice();
+  return game.getScore();
 };
 
 module.exports = {runIntCode};
