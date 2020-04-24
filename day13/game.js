@@ -17,12 +17,17 @@ class Game {
     return this.output.push(content);
   }
 
+  getTileCount(tileId) {
+    const tiles = Object.values(this.grid);
+    return tiles.reduce((count, tile) => count + (tile === tileId), 0);
+  }
+
   updateGrid() {
     const position = this.output.slice(0, 2);
     const tiles = {
-      0: () => (this.grid[position.join(':')] = 'empty'),
-      1: () => (this.grid[position.join(':')] = 'Block'),
-      2: () => (this.grid[position.join(':')] = 'Wall'),
+      0: () => (this.grid[position.join(':')] = 'Empty'),
+      1: () => (this.grid[position.join(':')] = 'Wall'),
+      2: () => (this.grid[position.join(':')] = 'Block'),
       3: () => (this.paddlePos = position),
       4: () => (this.ballPos = position),
     };

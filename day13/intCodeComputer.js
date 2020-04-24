@@ -130,7 +130,7 @@ const findOutputSignal = function (intCode) {
   return {done, instrLength};
 };
 
-const runIntCode = function (intCode, inputData) {
+const runIntCode = function (intCode) {
   memory = intCode;
   const initialBallPos = [0, 0];
   const initialPaddlePos = [0, 0];
@@ -144,15 +144,21 @@ const runIntCode = function (intCode, inputData) {
     game.play();
     memory.movePtrBy(instrLength);
   }
-
-  return game.getScore();
 };
 
 const main = function () {
   const input = JSON.parse(fs.readFileSync('./intCode.json', 'utf8'));
   const intCode = new IntCode(input);
-  const score = runIntCode(intCode, []);
-  console.log(score);
+  runIntCode(intCode, []);
+  console.log('Computer ran for getting block count or Score de-comment specific part.');
+
+  /* Part_2 Implementation For getting score make memory address 0 as 2
+    console.log(game.getScore());
+  */
+
+  /* Part_1 Implementation For getting Count make memory address 0 as 1
+    console.log(game.getTileCount('Block'));
+  */
 };
 
 main();
