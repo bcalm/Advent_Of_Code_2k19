@@ -3,8 +3,8 @@ class Game {
     this.ballPos = initialBallPosition;
     this.paddlePos = initialPaddlePosition;
     this.output = [];
-    this.grid = {};
     this.score = 0;
+    this.grid = {};
   }
 
   getInput() {
@@ -17,23 +17,28 @@ class Game {
     return this.output.push(content);
   }
 
+  updateGrid() {
+    const position = this.output.slice(0, 2);
+    const tiles = {
+      0: () => (this.grid[position.join(':')] = 'empty'),
+      1: () => (this.grid[position.join(':')] = 'Block'),
+      2: () => (this.grid[position.join(':')] = 'Wall'),
+      3: () => (this.paddlePos = position),
+      4: () => (this.ballPos = position),
+    };
+    tiles[this.output[2]]();
+  }
+
+  updateScore() {
+    this.score = this.output[2];
+  }
+
   play() {
-    if (this.output.length !== 3) return;
-    const [x, y] = this.output;
-    if (x === -1 && y === 0) {
-      this.score = this.output[2];
-    } else {
-      const tileId = this.output[2];
-      const updateGrid = {
-        0: () => {},
-        1: () => {},
-        2: () => {},
-        3: () => (this.paddlePos = [x, y]),
-        4: () => (this.ballPos = [x, y]),
-      };
-      updateGrid[tileId]();
+    if (this.output.length === 3) {
+      const [x, y] = this.output;
+      x === -1 && y === 0 ? this.updateScore() : this.updateGrid();
+      this.output = [];
     }
-    this.output = [];
   }
 
   getScore() {

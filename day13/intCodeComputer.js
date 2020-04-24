@@ -1,3 +1,5 @@
+const fs = require('fs');
+const {IntCode} = require('./intCode');
 const {Game} = require('./game');
 
 let memory, game;
@@ -146,4 +148,11 @@ const runIntCode = function (intCode, inputData) {
   return game.getScore();
 };
 
-module.exports = {runIntCode};
+const main = function () {
+  const input = JSON.parse(fs.readFileSync('./intCode.json', 'utf8'));
+  const intCode = new IntCode(input);
+  const score = runIntCode(intCode, []);
+  console.log(score);
+};
+
+main();
