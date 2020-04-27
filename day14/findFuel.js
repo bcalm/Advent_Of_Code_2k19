@@ -17,7 +17,7 @@ const parseReactions = function (reactions, reactionInput) {
 };
 
 const getOreCount = function (reactions, inputChemical, ore = 1, remaining = {}) {
-  if (inputChemical === 'ORE') return ore;
+  if (inputChemical === 'ORE') return {ore, remaining};
 
   remaining[inputChemical] = remaining[inputChemical] ? remaining[inputChemical] : 0;
   const extra = Math.min(ore, remaining[inputChemical]);
@@ -30,17 +30,28 @@ const getOreCount = function (reactions, inputChemical, ore = 1, remaining = {})
   inputs.forEach((input) => {
     const [reagentCount, chemical] = input;
     const multiple = Math.ceil(ore / +count) * +reagentCount;
-    oreCount += getOreCount(reactions, chemical, multiple, remaining);
+    const result = getOreCount(reactions, chemical, multiple, remaining);
+    oreCount += result.oreCount === undefined ? result.ore : result.oreCount;
   });
-
   remaining[inputChemical] += Math.ceil(ore / count) * count - ore;
-  return oreCount;
+  return {oreCount, remaining};
+};
+
+const getMaxFuel = function (reactions, oreCount) {
+  let totalOre = 0;
+  let fuel = Math.ceil(1000000000000 / oreCount);
+  while (totalOre < 1000000000000) {
+    fuel++;
+    totalOre = getOreCount(reactions, 'FUEL', fuel).oreCount;
+  }
+  return fuel - 1;
 };
 
 const main = function () {
   const reactionInputs = fs.readFileSync('reaction.json', 'utf8');
   const reactions = reactionInputs.split('\n').reduce(parseReactions, {});
-  console.log(getOreCount(reactions, 'FUEL'));
+  const oreCount = getOreCount(reactions, 'FUEL');
+  console.log(getMaxFuel(reactions, oreCount));
 };
 
 main();
