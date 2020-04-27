@@ -38,10 +38,13 @@ const getOreCount = function (reactions, inputChemical, ore = 1, remaining = {})
 };
 
 const getMaxFuel = function (reactions, oreCount) {
+  const maxLimit = 1000000000000;
   let totalOre = 0;
-  let fuel = Math.ceil(1000000000000 / oreCount);
-  while (totalOre < 1000000000000) {
-    fuel++;
+  let fuel = Math.ceil(maxLimit / oreCount);
+  while (totalOre < maxLimit) {
+    const oreCounts = getOreCount(reactions, 'FUEL', fuel).oreCount;
+    const remainOre = maxLimit - oreCounts;
+    fuel += Math.floor(remainOre / oreCount) || 1;
     totalOre = getOreCount(reactions, 'FUEL', fuel).oreCount;
   }
   return fuel - 1;
@@ -50,7 +53,7 @@ const getMaxFuel = function (reactions, oreCount) {
 const main = function () {
   const reactionInputs = fs.readFileSync('reaction.json', 'utf8');
   const reactions = reactionInputs.split('\n').reduce(parseReactions, {});
-  const oreCount = getOreCount(reactions, 'FUEL');
+  const {oreCount} = getOreCount(reactions, 'FUEL');
   console.log(getMaxFuel(reactions, oreCount));
 };
 
