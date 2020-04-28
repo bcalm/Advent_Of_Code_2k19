@@ -23,12 +23,12 @@ class Grid {
     return this.output.push(content);
   }
 
-  getAllPossibleMoves() {
+  getAllPossibleMoves(position = this.position) {
     const possibleMoves = [];
-    possibleMoves.push([this.position[0], this.position[1] + 1]);
-    possibleMoves.push([this.position[0], this.position[1] - 1]);
-    possibleMoves.push([this.position[0] - 1, this.position[1]]);
-    possibleMoves.push([this.position[0] + 1, this.position[1]]);
+    possibleMoves.push([+position[0], +position[1] + 1]);
+    possibleMoves.push([+position[0], +position[1] - 1]);
+    possibleMoves.push([+position[0] - 1, +position[1]]);
+    possibleMoves.push([+position[0] + 1, +position[1]]);
     return possibleMoves;
   }
 
@@ -49,6 +49,28 @@ class Grid {
 
   getMinStep() {
     return this.route.length;
+  }
+
+  getMap() {
+    return this.map;
+  }
+  getRoute() {
+    return this.route;
+  }
+
+  isEmptySpace() {
+    return Object.keys(this.map).reduce((count, move) => count + (this.map[move] === 1), 0);
+  }
+
+  getTimeToFillOxygen(time = 0) {
+    if (!this.isEmptySpace()) return time;
+    const oxygenPosition = Object.keys(this.map).filter((position) => this.map[position] === 2);
+    oxygenPosition.forEach((position) => {
+      const allMoves = this.getAllPossibleMoves(position.split(':'));
+      const emptySpaces = allMoves.filter((space) => this.map[space.join(':')] === 1);
+      emptySpaces.forEach((position) => (this.map[position.join(':')] = 2));
+    });
+    return this.getTimeToFillOxygen(++time);
   }
 }
 

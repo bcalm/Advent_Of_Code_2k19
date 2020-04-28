@@ -153,7 +153,8 @@ const main = function () {
   const inputSignal = JSON.parse(fs.readFileSync('./intCode.json', 'utf8'));
   const intCode = new IntCode(inputSignal);
   const minStep = runIntCode(intCode);
-  console.log(minStep);
+  const time = grid.getTimeToFillOxygen();
+  console.log(time);
 };
 
 main();
