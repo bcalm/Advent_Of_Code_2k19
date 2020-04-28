@@ -51,13 +51,6 @@ class Grid {
     return this.route.length;
   }
 
-  getMap() {
-    return this.map;
-  }
-  getRoute() {
-    return this.route;
-  }
-
   isEmptySpace() {
     return Object.keys(this.map).reduce((count, move) => count + (this.map[move] === 1), 0);
   }
