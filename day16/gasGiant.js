@@ -1,44 +1,48 @@
 const fs = require('fs');
 
-const getPhaseSetting = function (row, inputLength) {
-  const idealPhase = ['0', '1', '0', '-1'];
-  const phaseSetting = [];
-  let phase = '';
-  for (let index = 0; index < idealPhase.length; index++) {
-    phase = phase.concat(idealPhase[index].repeat(row + 1));
-  }
-  phase = phase.repeat(inputLength);
-  for (let index = 0; index < phase.length; index++) {
-    if (phase[index] == '-') {
-      phaseSetting.push(phase.substr(index, 2));
-      index++;
-    } else {
-      phaseSetting.push(phase[index]);
+const getAllPattern = function (inputLength) {
+  const basePattern = ['0', '1', '0', '-1'];
+  const patterns = [];
+  for (let row = 0; row < inputLength; row++) {
+    patternSetting = [];
+    let pattern = '';
+    for (let index = 0; index < basePattern.length; index++) {
+      pattern = pattern.concat(basePattern[index].repeat(row + 1));
     }
+    pattern = pattern.repeat(inputLength);
+    for (let index = 0; index < pattern.length; index++) {
+      if (pattern[index] == '-') {
+        patternSetting.push(pattern.substr(index, 2));
+        index++;
+      } else {
+        patternSetting.push(pattern[index]);
+      }
+    }
+    patterns.push(patternSetting.slice(1, inputLength + 1));
   }
-  return phaseSetting.slice(1, inputLength + 1);
+  return patterns;
 };
 
-const getOutput = function (fftInput, rounds = 0) {
-  console.log(rounds);
-  if (rounds === 100) return fftInput.slice(0, 8);
-  const newInput = [];
-  for (let i = 0; i < fftInput.length; i++) {
-    const phase = getPhaseSetting(i, fftInput.length);
-    let input = 0;
-    for (let j = 0; j < fftInput.length; j++) {
-      input += fftInput[j] * +phase[j];
+const getPhaseOutput = function (fftInput) {
+  const patterns = getAllPattern(fftInput.length);
+  for (let phase = 0; phase < 100; phase++) {
+    const newInput = [];
+    for (let i = 0; i < fftInput.length; i++) {
+      let input = 0;
+      for (let j = 0; j < fftInput.length; j++) {
+        input += fftInput[j] * patterns[i][j];
+      }
+      newInput.push(Math.abs(input.toString()[input.toString().length - 1]));
     }
-    newInput.push(Math.abs(input.toString()[input.toString().length - 1]));
+    fftInput = newInput.join('');
   }
-  return getOutput(newInput.join(''), ++rounds);
+  return fftInput.slice(0, 8);
 };
 
 const main = function () {
   const input = fs.readFileSync('./fftInput.json', 'utf8');
-  // const input = '69317163492948606335995924319873';
   const fftInput = input.split('').map((element) => +element);
-  console.log(getOutput(fftInput));
+  console.log(getPhaseOutput(fftInput));
 };
 
 main();
