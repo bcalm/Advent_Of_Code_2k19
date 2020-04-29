@@ -7,7 +7,8 @@ const getAllPattern = function (inputLength, basePattern, patterns = [], row = 0
   for (let index = 0; index < basePattern.length; index++) {
     pattern = pattern.concat(basePattern[index].repeat(row + 1));
   }
-  pattern = pattern.repeat(inputLength);
+  const numbersCount = pattern.split('').filter((number) => number !== '-').length;
+  pattern = pattern.repeat(inputLength / numbersCount + 1);
 
   for (let index = 0; index < pattern.length; index++) {
     if (pattern[index] == '-') {
@@ -23,7 +24,7 @@ const getAllPattern = function (inputLength, basePattern, patterns = [], row = 0
 };
 
 const getPhaseOutput = function (fftInput, patterns, phase = 0) {
-  if (phase === 4) return fftInput.slice(0, 8);
+  if (phase === 100) return fftInput.slice(0, 8);
 
   const newInput = [];
   for (let row = 0; row < fftInput.length; row++) {
