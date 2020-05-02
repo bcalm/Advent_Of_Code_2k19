@@ -1,48 +1,45 @@
 const fs = require('fs');
 
-const getAllPattern = function (inputLength, basePattern, patterns = [], row = 0) {
-  if (row === inputLength) return patterns;
-  const patternSetting = [];
-  let pattern = '';
-  for (let index = 0; index < basePattern.length; index++) {
-    pattern = pattern.concat(basePattern[index].repeat(row + 1));
-  }
-  const numbersCount = pattern.split('').filter((number) => number !== '-').length;
-  pattern = pattern.repeat(inputLength / numbersCount + 1);
-
-  for (let index = 0; index < pattern.length; index++) {
-    if (pattern[index] == '-') {
-      patternSetting.push(pattern.substr(index, 2));
-      index++;
-    } else {
-      patternSetting.push(pattern[index]);
+const getAllPattern = function (inputLength, basePattern) {
+  const patterns = [];
+  for (let row = 0; row < inputLength / 2; row++) {
+    let pattern = '';
+    for (let index = 0; index < basePattern.length; index++) {
+      pattern += basePattern[index].repeat(row + 1);
     }
+    pattern = pattern.match(/-?\d/g);
+    patterns[row] = pattern;
   }
-  patterns.push(patternSetting.slice(1, inputLength + 1));
-
-  return getAllPattern(inputLength, basePattern, patterns, ++row);
+  return patterns;
 };
 
-const getPhaseOutput = function (fftInput, patterns, phase = 0) {
-  if (phase === 100) return fftInput.slice(0, 8);
-
-  const newInput = [];
-  for (let row = 0; row < fftInput.length; row++) {
-    let input = 0;
-    for (let col = 0; col < fftInput.length; col++) {
-      input += fftInput[col] * patterns[row][col];
+const getPhaseOutput = function (fftInput, patterns) {
+  for (let phase = 0; phase < 4; phase++) {
+    console.log(phase);
+    const newInput = [];
+    for (let row = 0; row < fftInput.length / 2; row++) {
+      let input = 0;
+      const pattern = patterns[row];
+      for (let col = 0; col < fftInput.length; col++) {
+        input += fftInput[col] * +pattern[(col + 1) % pattern.length];
+      }
+      newInput[row] = Math.abs(input % 10);
+      const x = fftInput.slice(fftInput.length - row - 1).reduce((c, e) => +c + +e, 0);
+      newInput[fftInput.length - row - 1] = Math.abs(x % 10);
     }
-    newInput.push(Math.abs(input % 10));
+    fftInput = newInput;
   }
-  return getPhaseOutput(newInput.join(''), patterns, ++phase);
+  return fftInput;
 };
 
 const main = function () {
-  const input = fs.readFileSync('./fftInput.json', 'utf8');
-  const fftInput = input.split('').map((element) => +element);
+  // const input = fs.readFileSync('fftInput.json', 'utf8').repeat(10000);
+  // const messageOffset = input.slice(0, 7);
+  // const newInput = input.slice(messageOffset);
+  const newInput = '12345678'.split('');
   const basePattern = ['0', '1', '0', '-1'];
-  const patterns = getAllPattern(fftInput.length, basePattern);
-  console.log(getPhaseOutput(fftInput, patterns));
+  const patterns = getAllPattern(newInput.length, basePattern);
+  console.log(getPhaseOutput(newInput, patterns));
 };
 
 main();
