@@ -1,45 +1,24 @@
-const fs = require('fs');
-
-const getAllPattern = function (inputLength, basePattern) {
-  const patterns = [];
-  for (let row = 0; row < inputLength / 2; row++) {
-    let pattern = '';
-    for (let index = 0; index < basePattern.length; index++) {
-      pattern += basePattern[index].repeat(row + 1);
+const getPhaseOutput = function (fftInput, messageOffset) {
+  let count = 0;
+  while (count < 100) {
+    let index = fftInput.length - 1;
+    while (index != 0) {
+      const num1 = fftInput[index];
+      const num2 = fftInput[index - 1];
+      fftInput[index - 1] = Math.abs((num1 + num2) % 10);
+      index -= 1;
     }
-    pattern = pattern.match(/-?\d/g);
-    patterns[row] = pattern;
+    count += 1;
   }
-  return patterns;
-};
-
-const getPhaseOutput = function (fftInput, patterns) {
-  for (let phase = 0; phase < 4; phase++) {
-    console.log(phase);
-    const newInput = [];
-    for (let row = 0; row < fftInput.length / 2; row++) {
-      let input = 0;
-      const pattern = patterns[row];
-      for (let col = 0; col < fftInput.length; col++) {
-        input += fftInput[col] * +pattern[(col + 1) % pattern.length];
-      }
-      newInput[row] = Math.abs(input % 10);
-      const x = fftInput.slice(fftInput.length - row - 1).reduce((c, e) => +c + +e, 0);
-      newInput[fftInput.length - row - 1] = Math.abs(x % 10);
-    }
-    fftInput = newInput;
-  }
-  return fftInput;
+  return fftInput.slice(messageOffset);
 };
 
 const main = function () {
-  // const input = fs.readFileSync('fftInput.json', 'utf8').repeat(10000);
-  // const messageOffset = input.slice(0, 7);
-  // const newInput = input.slice(messageOffset);
-  const newInput = '12345678'.split('');
-  const basePattern = ['0', '1', '0', '-1'];
-  const patterns = getAllPattern(newInput.length, basePattern);
-  console.log(getPhaseOutput(newInput, patterns));
+  const input =
+    '59702216318401831752516109671812909117759516365269440231257788008453756734827826476239905226493589006960132456488870290862893703535753691507244120156137802864317330938106688973624124594371608170692569855778498105517439068022388323566624069202753437742801981883473729701426171077277920013824894757938493999640593305172570727136129712787668811072014245905885251704882055908305407719142264325661477825898619802777868961439647723408833957843810111456367464611239017733042717293598871566304020426484700071315257217011872240492395451028872856605576492864646118292500813545747868096046577484535223887886476125746077660705155595199557168004672030769602168262';
+  const messageOffset = +input.slice(0, 7);
+  const newInput = input.repeat(10000).split('').map(Number);
+  console.log(getPhaseOutput(newInput, messageOffset).join('').substr(0, 8));
 };
 
 main();
